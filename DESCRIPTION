@@ -27,3 +27,4 @@ Imports:
     tidytext,
     topicmodels
 RoxygenNote: 7.3.2
+URL: https://anshalmm.github.io/corpuscleaner/
