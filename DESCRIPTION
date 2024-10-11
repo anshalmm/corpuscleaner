@@ -10,6 +10,7 @@ Description: The package has two major functions novels() and
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+LazyDataCompression: bzip2
 Suggests: 
     knitr,
     reshape2,
