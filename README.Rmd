@@ -1,0 +1,92 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  message = F,
+  warning = F
+)
+```
+
+# corpuscleaner
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This package has a collection of 18 Documents cleaned and ready for use regarding Corpus Analysis. It has `novels()` function which has the collection consisting of: 
+
+* `title`: The Title of the Document
+* `text`: The Text of the Document
+* `year`: The Year the Document was Published
+* `author`: The Author of the Document
+* `novel_bookshelf`: The Category of the Document
+
+It also has a function `polish(..., vars)` that consists of: 
+
+* `title`
+* `text` 
+
+and can add any `column_name` of your choice such as `year`, `author`, or both. 
+
+## Installation
+
+You can install the development version of corpuscleaner from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("corpuscleaner")
+# devtools::install_github("anshalmm/R-Projects")
+```
+
+## Examples
+
+These are basic examples of what `corpuscleaner` can show you when combined with basic text analysis:
+
+```{r example}
+library(corpuscleaner)
+library(dplyr)
+library(tidytext)
+```
+
+Here we're using the `novels()` function and filtering it out to find the metadata of the document `Wuthering Heights`
+
+
+```{r}
+WH_Text = novels() %>%
+  filter(title == "Wuthering Heights")
+
+WH_Text
+  
+```
+
+
+Then we can use the `polish` function to extract the title, text, and an additional column, author for the 
+document `Vathek`.
+
+We can do some frequency list text analysis on this document by finding all the unigrams in it:
+
+
+```{r}
+polish(title == "Vathek", vars = "author")
+unigram_Analysis = polish(title == "Vathek", vars = "author")
+
+UA = unigram_Analysis %>%
+  unnest_tokens(word, 
+                text, 
+                token = "words") %>%
+  anti_join(get_stopwords("en", source = "smart")) 
+
+UA_Count_Words = UA %>%
+  count(word, sort = T)
+UA_Count_Words
+
+```
+
+
+If you would like to know how to use this package, please see the Vignette on it. 
