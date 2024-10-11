@@ -18,6 +18,12 @@ Depends:
     R (>= 2.10)
 Imports: 
     dplyr,
+    librarian,
+    magrittr,
     rlang,
-    tidytext
+    stopwords,
+    stringr,
+    tidyr,
+    tidytext,
+    topicmodels
 RoxygenNote: 7.3.2

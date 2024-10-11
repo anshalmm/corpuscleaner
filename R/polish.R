@@ -11,12 +11,18 @@
 #' @importFrom dplyr group_by
 #' @importFrom dplyr filter
 #' @importFrom dplyr select
+#' @importFrom rlang .data
 #' @importFrom magrittr %>%
 #' @examples
 #' polish(title == "Frankenstein", vars = "year")
 polish = function(..., vars){
   suppressMessages(novels_tgt %>%
-                     dplyr::group_by(title, text) %>%
+                     dplyr::group_by(.data$title, .data$text) %>%
                      dplyr::filter(...) %>%
                      dplyr::select({{vars}}))
 }
+
+
+# Note: For these to work they need to not have a COLUMN COLLISION to be considered binding and part of the
+# global variables. See this link here and section about Data AND Column Collisions:
+# https://rlang.r-lib.org/reference/topic-data-mask-ambiguity.html
