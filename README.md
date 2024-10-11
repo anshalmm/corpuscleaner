@@ -31,7 +31,7 @@ You can install the development version of corpuscleaner from
 
 ``` r
 # install.packages("corpuscleaner")
-# devtools::install_github("anshalmm/R-Projects")
+devtools::install_github("anshalmm/corpuscleaner")
 ```
 
 ## Examples
