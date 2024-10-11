@@ -18,4 +18,3 @@ novels = function(){
   A = novels_tgt
   return(A)
 }
-

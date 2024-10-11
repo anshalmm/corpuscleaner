@@ -21,8 +21,3 @@ polish = function(..., vars){
                      dplyr::filter(...) %>%
                      dplyr::select({{vars}}))
 }
-
-
-# Note: For these to work they need to not have a COLUMN COLLISION to be considered binding and part of the
-# global variables. See this link here and section about Data AND Column Collisions:
-# https://rlang.r-lib.org/reference/topic-data-mask-ambiguity.html

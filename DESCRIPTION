@@ -12,6 +12,7 @@ Encoding: UTF-8
 LazyData: true
 Suggests: 
     knitr,
+    reshape2,
     rmarkdown
 VignetteBuilder: knitr
 Depends: 
@@ -22,6 +23,7 @@ Imports:
     magrittr,
     rlang,
     stopwords,
+    stringi,
     stringr,
     tidyr,
     tidytext,
