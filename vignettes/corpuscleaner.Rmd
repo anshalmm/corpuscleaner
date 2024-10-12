@@ -1,8 +1,8 @@
 ---
-title: "Novels"
+title: "corpuscleaner"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Novels}
+  %\VignetteIndexEntry{corpuscleaner}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -24,9 +24,10 @@ library(magrittr)
 library(topicmodels)
 library(stringr)
 library(tidyr)
+library(reshap2)
 ```
 
-## Understanding corpuscleaner
+# Understanding corpuscleaner
 The `{corpuscleaner}` package has a tibble called `novels()` which consists of 18 cleaned documents usable for basic text analysis. 
 
 ```{r}
