@@ -24,7 +24,7 @@ library(magrittr)
 library(topicmodels)
 library(stringr)
 library(tidyr)
-library(reshap2)
+library(reshape2)
 ```
 
 # Understanding corpuscleaner
