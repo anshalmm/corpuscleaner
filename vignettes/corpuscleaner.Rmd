@@ -1,8 +1,8 @@
 ---
-title: "corpuscleaner"
+title: "Introduction of corpuscleaner"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{corpuscleaner}
+  %\VignetteIndexEntry{Introduction of corpuscleaner}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
