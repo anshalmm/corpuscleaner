@@ -3,8 +3,8 @@ template:
   bootstrap: 5
 
 articles:
-- title: Get started
-  navbar: ~
+- title: Vignette
+  navbar: Get started
   contents:
   - Novels
 
@@ -18,3 +18,6 @@ reference:
 - title: Dataset
   contents:
   - novels_tgt
+
+authors:
+    Anshal Majmudar
