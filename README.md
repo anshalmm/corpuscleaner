@@ -6,9 +6,11 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-This package has a collection of 18 Documents cleaned and ready for use
-regarding Corpus Analysis. It has `novels()` function which has the
-collection consisting of:
+## Overview
+
+The `{corpuscleaner}` package has a collection of 18 Documents cleaned
+and ready for use regarding Corpus Analysis. It has a `novels()`
+function which has the collection consisting of:
 
 - `title`: The Title of the Document
 - `text`: The Text of the Document
