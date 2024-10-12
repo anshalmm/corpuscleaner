@@ -6,7 +6,7 @@ template:
 
 articles:
 - title: Vignette
-- navbar: Vignette
+  navbar: Vignette
   contents:
   - Novels
 
