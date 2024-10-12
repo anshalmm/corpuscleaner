@@ -17,4 +17,4 @@ reference:
   - polish
 - title: Dataset
   contents:
-  novels_tgt
+  - novels_tgt
