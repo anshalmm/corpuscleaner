@@ -2,3 +2,19 @@ url: https://anshalmm.github.io/corpuscleaner/
 template:
   bootstrap: 5
 
+articles:
+- title: Get started
+  navbar: ~
+  contents:
+  - Novels
+
+reference:
+- title: Functions
+  desc: >
+  Functions of the package
+  contents:
+  - novels
+  - polish
+- title: Dataset
+  contents:
+  novels_tgt
