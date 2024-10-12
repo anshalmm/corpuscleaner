@@ -1,10 +1,11 @@
 url: https://anshalmm.github.io/corpuscleaner/
+development:
+  mode: auto
 template:
   bootstrap: 5
 
 articles:
 - title: Vignette
-  navbar: Get started
   contents:
   - Novels
 
