@@ -6,6 +6,7 @@ template:
 
 articles:
 - title: Vignette
+- navbar: Vignette
   contents:
   - Novels
 
