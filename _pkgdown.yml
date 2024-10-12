@@ -10,8 +10,6 @@ articles:
 
 reference:
 - title: Functions
-  desc: >
-    Functions of the package.
   contents:
   - novels
   - polish
