@@ -4,12 +4,6 @@ development:
 template:
   bootstrap: 5
 
-articles:
-- title: Vignette
-  navbar: Vignette
-  contents:
-  - Novels
-
 reference:
 - title: Functions
   contents:
