@@ -2,7 +2,7 @@ Package: corpuscleaner
 Type: Package
 Title: A Tibble of 18 Cleaned Documents usable for Text Analysis 
 Version: 0.1.0
-Authors@R: person("Anshal", "Majmudar", email = "ammajmudar@ucdavis.edu", role = c("aut", "cre"))
+Authors@R: person("Anshal", "Majmudar", "ammajmudar@ucdavis.edu", role = c("aut", "cre"))
 Description: The package has two major functions novels() and 
     polish(..., vars). To know more about them please refer to 
     the Vignette. 
