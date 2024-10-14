@@ -18,9 +18,9 @@ function which has the collection consisting of:
 - `author`: The Author of the Document
 - `novel_bookshelf`: The Category of the Document
 
-It also has a function `polish(..., vars)` that consists of:
+It also has a function `novels_by_ID(..., vars)` that consists of:
 
-- `title`
+- `ID`
 - `text`
 
 and can add any `column_name` of your choice such as `year`, `author`,
@@ -56,45 +56,60 @@ WH_Text = novels() %>%
 
 WH_Text
 #> # A tibble: 20,721 × 5
-#>    title             text                            year author novel_bookshelf
-#>    <chr>             <chr>                          <dbl> <chr>  <chr>          
-#>  1 Wuthering Heights WUTHERING HEIGHTS               1847 Bront… Tragedy        
-#>  2 Wuthering Heights CHAPTER I                       1847 Bront… Tragedy        
-#>  3 Wuthering Heights I have just returned from a v…  1847 Bront… Tragedy        
-#>  4 Wuthering Heights This is certainly a beautiful…  1847 Bront… Tragedy        
-#>  5 Wuthering Heights In all England                  1847 Bront… Tragedy        
-#>  6 Wuthering Heights I do not believe that I could…  1847 Bront… Tragedy        
-#>  7 Wuthering Heights A perfect misanthropist s hea…  1847 Bront… Tragedy        
-#>  8 Wuthering Heights and Mr                          1847 Bront… Tragedy        
-#>  9 Wuthering Heights Heathcliff and I are such a s…  1847 Bront… Tragedy        
-#> 10 Wuthering Heights A capital fellow                1847 Bront… Tragedy        
+#>       ID title             text                                      year author
+#>    <dbl> <chr>             <chr>                                    <dbl> <chr> 
+#>  1     1 Wuthering Heights WUTHERING HEIGHTS                         1847 Bront…
+#>  2     1 Wuthering Heights CHAPTER I                                 1847 Bront…
+#>  3     1 Wuthering Heights I have just returned from a visit to my…  1847 Bront…
+#>  4     1 Wuthering Heights This is certainly a beautiful country     1847 Bront…
+#>  5     1 Wuthering Heights In all England                            1847 Bront…
+#>  6     1 Wuthering Heights I do not believe that I could have fixe…  1847 Bront…
+#>  7     1 Wuthering Heights A perfect misanthropist s heaven          1847 Bront…
+#>  8     1 Wuthering Heights and Mr                                    1847 Bront…
+#>  9     1 Wuthering Heights Heathcliff and I are such a suitable pa…  1847 Bront…
+#> 10     1 Wuthering Heights A capital fellow                          1847 Bront…
 #> # ℹ 20,711 more rows
 ```
 
-Then we can use the `polish` function to extract the title, text, and an
-additional column, author for the document `Vathek`.
+Then we can use the `novels_by_ID` function to extract the ID, text, and
+an additional column, author, for the document `Vathek`.
 
 We can do some frequency list text analysis on this document by finding
 all the unigrams in it:
 
 ``` r
-polish(title == "Vathek", vars = "author")
+novels()
+#> # A tibble: 369,611 × 5
+#>       ID title             text                                      year author
+#>    <dbl> <chr>             <chr>                                    <dbl> <chr> 
+#>  1     1 Wuthering Heights WUTHERING HEIGHTS                         1847 Bront…
+#>  2     1 Wuthering Heights CHAPTER I                                 1847 Bront…
+#>  3     1 Wuthering Heights I have just returned from a visit to my…  1847 Bront…
+#>  4     1 Wuthering Heights This is certainly a beautiful country     1847 Bront…
+#>  5     1 Wuthering Heights In all England                            1847 Bront…
+#>  6     1 Wuthering Heights I do not believe that I could have fixe…  1847 Bront…
+#>  7     1 Wuthering Heights A perfect misanthropist s heaven          1847 Bront…
+#>  8     1 Wuthering Heights and Mr                                    1847 Bront…
+#>  9     1 Wuthering Heights Heathcliff and I are such a suitable pa…  1847 Bront…
+#> 10     1 Wuthering Heights A capital fellow                          1847 Bront…
+#> # ℹ 369,601 more rows
+novels_by_ID(ID = 2, vars = "year")
 #> # A tibble: 5,259 × 3
-#> # Groups:   title, text [4,903]
-#>    title  text             author           
-#>    <chr>  <chr>            <chr>            
-#>  1 Vathek VATHEK           Beckford, William
-#>  2 Vathek AN ARABIAN TALE  Beckford, William
-#>  3 Vathek BY               Beckford, William
-#>  4 Vathek WILLIAM BECKFORD Beckford, William
-#>  5 Vathek ESQ              Beckford, William
-#>  6 Vathek p                Beckford, William
-#>  7 Vathek VATHEK           Beckford, William
-#>  8 Vathek Vathek           Beckford, William
-#>  9 Vathek ninth Caliph     Beckford, William
-#> 10 Vathek a                Beckford, William
+#> # Groups:   ID, text [4,903]
+#>       ID text              year
+#>    <dbl> <chr>            <dbl>
+#>  1     2 VATHEK            1786
+#>  2     2 AN ARABIAN TALE   1786
+#>  3     2 BY                1786
+#>  4     2 WILLIAM BECKFORD  1786
+#>  5     2 ESQ               1786
+#>  6     2 p                 1786
+#>  7     2 VATHEK            1786
+#>  8     2 Vathek            1786
+#>  9     2 ninth Caliph      1786
+#> 10     2 a                 1786
 #> # ℹ 5,249 more rows
-unigram_Analysis = polish(title == "Vathek", vars = "author")
+unigram_Analysis = novels_by_ID(ID = 2, vars = "year")
 
 UA = unigram_Analysis %>%
   unnest_tokens(word, 
@@ -106,21 +121,21 @@ UA_Count_Words = UA %>%
   count(word, sort = T)
 UA_Count_Words
 #> # A tibble: 5,393 × 3
-#> # Groups:   title [1]
-#>    title  word            n
-#>    <chr>  <chr>       <int>
-#>  1 Vathek caliph        151
-#>  2 Vathek vathek        125
-#>  3 Vathek nouronihar     87
-#>  4 Vathek carathis       79
-#>  5 Vathek thy            78
-#>  6 Vathek thou           72
-#>  7 Vathek whilst         66
-#>  8 Vathek bababalouk     55
-#>  9 Vathek gulchenrouz    54
-#> 10 Vathek palace         47
+#> # Groups:   ID [1]
+#>       ID word            n
+#>    <dbl> <chr>       <int>
+#>  1     2 caliph        151
+#>  2     2 vathek        125
+#>  3     2 nouronihar     87
+#>  4     2 carathis       79
+#>  5     2 thy            78
+#>  6     2 thou           72
+#>  7     2 whilst         66
+#>  8     2 bababalouk     55
+#>  9     2 gulchenrouz    54
+#> 10     2 palace         47
 #> # ℹ 5,383 more rows
 ```
 
-If you would like to know how to use this package, please see the
-Vignette on it.
+If you would like to know more about this package, please see the Get
+started Page.

@@ -29,9 +29,9 @@ The `{corpuscleaner}` package has a collection of 18 Documents cleaned and ready
 * `author`: The Author of the Document
 * `novel_bookshelf`: The Category of the Document
 
-It also has a function `polish(..., vars)` that consists of: 
+It also has a function `novels_by_ID(..., vars)` that consists of: 
 
-* `title`
+* `ID`
 * `text` 
 
 and can add any `column_name` of your choice such as `year`, `author`, or both. 
@@ -63,19 +63,18 @@ WH_Text = novels() %>%
   filter(title == "Wuthering Heights")
 
 WH_Text
-  
 ```
 
 
-Then we can use the `polish` function to extract the title, text, and an additional column, author for the 
-document `Vathek`.
+Then we can use the `novels_by_ID` function to extract the ID, text, and an additional column, author, for the document `Vathek`.
 
 We can do some frequency list text analysis on this document by finding all the unigrams in it:
 
 
 ```{r}
-polish(title == "Vathek", vars = "author")
-unigram_Analysis = polish(title == "Vathek", vars = "author")
+novels()
+novels_by_ID(ID = 2, vars = "year")
+unigram_Analysis = novels_by_ID(ID = 2, vars = "year")
 
 UA = unigram_Analysis %>%
   unnest_tokens(word, 
@@ -86,8 +85,7 @@ UA = unigram_Analysis %>%
 UA_Count_Words = UA %>%
   count(word, sort = T)
 UA_Count_Words
-
 ```
 
 
-If you would like to know how to use this package, please see the Vignette on it. 
+If you would like to know more about this package, please see the Get started Page.  
