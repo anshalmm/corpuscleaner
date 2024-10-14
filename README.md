@@ -137,5 +137,6 @@ UA_Count_Words
 #> # ℹ 5,383 more rows
 ```
 
-If you would like to know more about this package, please see the Get
-started Page.
+If you would like to know more about this package, please see the [Get
+started](https://anshalmm.github.io/corpuscleaner/articles/corpuscleaner.html)
+Page.
