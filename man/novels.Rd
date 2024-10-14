@@ -25,5 +25,5 @@ library(tidytext)
 novels() \%>\%
   unnest_tokens(word, text) \%>\%
   anti_join(get_stopwords("en", source = "smart")) \%>\%
-  count(title, word, sort = TRUE)
+  count(ID, title, word, sort = TRUE)
 }
