@@ -3,14 +3,21 @@
 \name{novels}
 \alias{novels}
 \title{18 Cleaned Novels}
+\format{
+A dataframe with 369111 rows and 6 variables consisting of:
+\describe{
+ \item{ID}{ID of Documents}
+ \item{title}{Title of Documents}
+ \item{text}{Text of Documents}
+ \item{year}{Year Published}
+ \item{author}{Author of Documents}
+}
+}
 \usage{
 novels()
 }
-\value{
-A dataframe with 369111 rows and 5 variables
-}
 \description{
-A complete cleaned tibble of 18 Novels that is usable for Corpus Analytics
+A complete cleaned tibble of 18 Documents that are usable for Corpus Analytics
 }
 \examples{
 library(dplyr)

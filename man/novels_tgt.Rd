@@ -3,21 +3,21 @@
 \docType{data}
 \name{novels_tgt}
 \alias{novels_tgt}
-\title{A Tibble of 18 Cleaned Novels}
+\title{18 Cleaned Documents}
 \format{
-A \code{tibble} with 369111 rows and 5 variables:
+A \code{tibble} with 369111 rows and 6 variables consisting of:
 \describe{
+ \item{ID}{ID of Novels}
  \item{title}{Title of Novels}
  \item{text}{Text of Novels}
  \item{year}{Year Published}
  \item{author}{Author of Novels}
- \item{novel_bookshelf}{Category of Novels}
- }
+}
 }
 \usage{
 novels_tgt
 }
 \description{
-A \code{tibble} of 18 Cleaned Novels that is usable for Corpus Analysis. It consists of
+A Tibble of 18 Cleaned Documents usable for Corpus Analysis
 }
 \keyword{dataset}
