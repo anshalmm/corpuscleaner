@@ -8,7 +8,7 @@ reference:
 - title: Functions
   contents:
   - novels
-  - polish
+  - novels_by_ID
 - title: Dataset
   contents:
   - novels_tgt
