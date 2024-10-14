@@ -81,56 +81,56 @@ basic text analysis.</p>
 <span>                token <span class="op">=</span> <span class="st">"words"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html" class="external-link">anti_join</a></span><span class="op">(</span><span class="fu"><a href="https://juliasilge.github.io/tidytext/reference/get_stopwords.html" class="external-link">get_stopwords</a></span><span class="op">(</span><span class="st">"en"</span>, source <span class="op">=</span> <span class="st">"smart"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 895,673 × 5</span></span></span>
-<span><span class="co">#&gt;    title                year author         novel_bookshelf word     </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> The Monk: A Romance  <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction  monk     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> The Monk: A Romance  <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction  romance  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> The Monk: A Romance  <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction  matthew  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> The Monk: A Romance  <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction  lewis    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> The Monk: A Romance  <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction  somnia   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> The Monk: A Romance  <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction  terrores </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> The Monk: A Romance  <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction  magicos  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> The Monk: A Romance  <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction  miracula </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> The Monk: A Romance  <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction  sagas    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> The Monk: A Romance  <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction  nocturnos</span></span>
+<span><span class="co">#&gt;       ID title              year author        word     </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily wuthering</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily heights  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily chapter  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily returned </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily visit    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily landlord </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily solitary </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily neighbour</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily troubled </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily beautiful</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 895,663 more rows</span></span></span></code></pre></div>
-<p>It also includes a function called <code>polish</code> which
+<p>It also includes a function called <code>novels_by_ID</code> which
 minimizes using the entire <code><a href="../reference/novels.html">novels()</a></code> tibble for text
-analysis, and instead pick the document of your choice and column names,
-such as the year the novel was published, the author of the novel, or
-both.</p>
+analysis, and instead pick, by ID, the document of your choice and
+column names, such as the year the novel was published, the author of
+the novel, or both.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">corpuscleaner</span><span class="fu">::</span><span class="va"><a href="../reference/novels_tgt.html">novels_tgt</a></span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/novels.html">novels</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 369,611 × 5</span></span></span>
-<span><span class="co">#&gt;    title               text                year author         novel_bookshelf</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> The Monk: A Romance THE MONK A ROMANCE  <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> The Monk: A Romance by MATTHEW LEWIS    <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> The Monk: A Romance Somnia              <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> The Monk: A Romance terrores magicos    <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> The Monk: A Romance miracula            <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> The Monk: A Romance sagas               <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> The Monk: A Romance Nocturnos lemures   <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> The Monk: A Romance portentaque         <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> The Monk: A Romance Horat               <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> The Monk: A Romance Dreams              <span style="text-decoration: underline;">1</span>795 Lewis, Matthew Gothic Fiction </span></span>
+<span><span class="co">#&gt;       ID title             text                                      year author</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 Wuthering Heights WUTHERING HEIGHTS                         <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     1 Wuthering Heights CHAPTER I                                 <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     1 Wuthering Heights I have just returned from a visit to my…  <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     1 Wuthering Heights This is certainly a beautiful country     <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     1 Wuthering Heights In all England                            <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     1 Wuthering Heights I do not believe that I could have fixe…  <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     1 Wuthering Heights A perfect misanthropist s heaven          <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     1 Wuthering Heights and Mr                                    <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     1 Wuthering Heights Heathcliff and I are such a suitable pa…  <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     1 Wuthering Heights A capital fellow                          <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 369,601 more rows</span></span></span>
-<span><span class="fu"><a href="../reference/polish.html">polish</a></span><span class="op">(</span><span class="va">title</span> <span class="op">==</span> <span class="st">"Wuthering Heights"</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"author"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 20,721 × 4</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   title, text [17,401]</span></span></span>
-<span><span class="co">#&gt;    title             text                                            year author</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Wuthering Heights WUTHERING HEIGHTS                               <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Wuthering Heights CHAPTER I                                       <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Wuthering Heights I have just returned from a visit to my landl…  <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Wuthering Heights This is certainly a beautiful country           <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Wuthering Heights In all England                                  <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Wuthering Heights I do not believe that I could have fixed on a…  <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Wuthering Heights A perfect misanthropist s heaven                <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Wuthering Heights and Mr                                          <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Wuthering Heights Heathcliff and I are such a suitable pair to …  <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Wuthering Heights A capital fellow                                <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 20,711 more rows</span></span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/novels_by_ID.html">novels_by_ID</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>, vars <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 20,393 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   ID, text [19,063]</span></span></span>
+<span><span class="co">#&gt;       ID text                                        year</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     5 FRANKENSTEIN                                <span style="text-decoration: underline;">1</span>818</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     5 OR                                          <span style="text-decoration: underline;">1</span>818</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     5 THE MODERN PROMETHEUS                       <span style="text-decoration: underline;">1</span>818</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     5 BY MARY W                                   <span style="text-decoration: underline;">1</span>818</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5 SHELLEY                                     <span style="text-decoration: underline;">1</span>818</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     5 PREFACE                                     <span style="text-decoration: underline;">1</span>818</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     5 The event on which this fiction is founded  <span style="text-decoration: underline;">1</span>818</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     5 has been supposed                           <span style="text-decoration: underline;">1</span>818</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     5 by Dr                                       <span style="text-decoration: underline;">1</span>818</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     5 Darwin                                      <span style="text-decoration: underline;">1</span>818</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 20,383 more rows</span></span></span></code></pre></div>
 <div class="section level4">
 <h4 id="usage-in-text-analysis">Usage in Text Analysis<a class="anchor" aria-label="anchor" href="#usage-in-text-analysis"></a>
 </h4>
@@ -195,18 +195,18 @@ tf-idf:</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">text</span>, <span class="st">"^CHAPTER "</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">text</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 293 × 2</span></span></span>
-<span><span class="co">#&gt;    title               text                                                     </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> The Monk: A Romance CHAPTER I                                                </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> The Monk: A Romance CHAPTER II Forse se tu gustassi una sol volta            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> The Monk: A Romance CHAPTER III                                              </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> The Monk: A Romance CHAPTER I Avaunt                                         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> The Monk: A Romance CHAPTER II O You                                         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> The Monk: A Romance CHAPTER III While in each other s arms entranced They lay</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> The Monk: A Romance CHAPTER IV                                               </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> The Monk: A Romance CHAPTER I The crickets sing                              </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> The Monk: A Romance CHAPTER II Tell us                                       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> The Monk: A Romance CHAPTER III Oh                                           </span></span>
+<span><span class="co">#&gt;    title             text        </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Wuthering Heights CHAPTER I   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Wuthering Heights CHAPTER II  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Wuthering Heights CHAPTER III </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Wuthering Heights CHAPTER IV  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Wuthering Heights CHAPTER V   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Wuthering Heights CHAPTER VI  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Wuthering Heights CHAPTER VII </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Wuthering Heights CHAPTER VIII</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Wuthering Heights CHAPTER IX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Wuthering Heights CHAPTER X   </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 283 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Optional: </span></span>
