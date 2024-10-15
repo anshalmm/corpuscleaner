@@ -4,7 +4,7 @@ Title: A Tibble of 18 Cleaned Documents usable for Text Analysis
 Version: 0.1.0
 Authors@R: person("Anshal", "Majmudar", ,"ammajmudar@ucdavis.edu", role = c("aut", "cre"))
 Description: The package has two major functions novels() and 
-    novels_by_ID(ID, vars). To know more about them please refer to 
+    document_by_ID(ID, vars). To know more about them please refer to 
     the Vignette. 
 License: MIT + file LICENSE
 Encoding: UTF-8
