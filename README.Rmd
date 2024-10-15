@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 ## Overview 
 The `{corpuscleaner}` package has a collection of `18 Documents` cleaned and ready for use regarding Text Analysis. It has a dataset `Documents` which has the collection consisting of: 
 
-* `id`: ID of the Document
+* `ID`: ID of the Document
 * `title`: Title of the Document
 * `text`: Text of the Document 
 * `year`: Year the Document was Published 

@@ -56,20 +56,20 @@ novels() %>%
                 text, 
                 token = "words") %>%
   anti_join(get_stopwords("en", source = "smart"))
-#> # A tibble: 895,673 × 6
+#> [38;5;246m# A tibble: 895,673 × 6[39m
 #>       ID title                year author         novel_bookshelf word     
-#>    <dbl> <chr>               <dbl> <chr>          <chr>           <chr>    
-#>  1     8 The Monk: A Romance  1795 Lewis, Matthew Gothic Fiction  monk     
-#>  2     8 The Monk: A Romance  1795 Lewis, Matthew Gothic Fiction  romance  
-#>  3     8 The Monk: A Romance  1795 Lewis, Matthew Gothic Fiction  matthew  
-#>  4     8 The Monk: A Romance  1795 Lewis, Matthew Gothic Fiction  lewis    
-#>  5     8 The Monk: A Romance  1795 Lewis, Matthew Gothic Fiction  somnia   
-#>  6     8 The Monk: A Romance  1795 Lewis, Matthew Gothic Fiction  terrores 
-#>  7     8 The Monk: A Romance  1795 Lewis, Matthew Gothic Fiction  magicos  
-#>  8     8 The Monk: A Romance  1795 Lewis, Matthew Gothic Fiction  miracula 
-#>  9     8 The Monk: A Romance  1795 Lewis, Matthew Gothic Fiction  sagas    
-#> 10     8 The Monk: A Romance  1795 Lewis, Matthew Gothic Fiction  nocturnos
-#> # ℹ 895,663 more rows
+#>    [3m[38;5;246m<dbl>[39m[23m [3m[38;5;246m<chr>[39m[23m               [3m[38;5;246m<dbl>[39m[23m [3m[38;5;246m<chr>[39m[23m          [3m[38;5;246m<chr>[39m[23m           [3m[38;5;246m<chr>[39m[23m    
+#> [38;5;250m 1[39m     8 The Monk: A Romance  [4m1[24m795 Lewis, Matthew Gothic Fiction  monk     
+#> [38;5;250m 2[39m     8 The Monk: A Romance  [4m1[24m795 Lewis, Matthew Gothic Fiction  romance  
+#> [38;5;250m 3[39m     8 The Monk: A Romance  [4m1[24m795 Lewis, Matthew Gothic Fiction  matthew  
+#> [38;5;250m 4[39m     8 The Monk: A Romance  [4m1[24m795 Lewis, Matthew Gothic Fiction  lewis    
+#> [38;5;250m 5[39m     8 The Monk: A Romance  [4m1[24m795 Lewis, Matthew Gothic Fiction  somnia   
+#> [38;5;250m 6[39m     8 The Monk: A Romance  [4m1[24m795 Lewis, Matthew Gothic Fiction  terrores 
+#> [38;5;250m 7[39m     8 The Monk: A Romance  [4m1[24m795 Lewis, Matthew Gothic Fiction  magicos  
+#> [38;5;250m 8[39m     8 The Monk: A Romance  [4m1[24m795 Lewis, Matthew Gothic Fiction  miracula 
+#> [38;5;250m 9[39m     8 The Monk: A Romance  [4m1[24m795 Lewis, Matthew Gothic Fiction  sagas    
+#> [38;5;250m10[39m     8 The Monk: A Romance  [4m1[24m795 Lewis, Matthew Gothic Fiction  nocturnos
+#> [38;5;246m# ℹ 895,663 more rows[39m
 ```
 
 Here, we can use the `document_by_ID` function to extract the `id`,
@@ -80,33 +80,33 @@ document by finding all the unigrams in it:
 
 ``` r
 Documents
-#> # A tibble: 18 × 5
+#> [38;5;246m# A tibble: 18 × 5[39m
 #>    id    title                          text                        year  author
-#>    <chr> <chr>                          <chr>                       <chr> <chr> 
-#>  1 1     Vathek                         vathek an arabian tale by … 1786  Beckf…
-#>  2 2     A Sicilian Romance             a sicilian romance by ann … 1790  Radcl…
-#>  3 3     The Mysteries of Udulpho       the mysteries of udolpho a… 1794  Radcl…
-#>  4 4     The Monk: A Romance            the monk a romance by matt… 1795  Lewis…
-#>  5 5     Sense and Sensibility          sense and sensibility by j… 1811  Auste…
-#>  6 6     Frankenstein                   frankenstein or the modern… 1818  Shell…
-#>  7 7     Ivanhoe                        ivanhoe a romance by sir w… 1820  Scott…
-#>  8 8     Narrative of Arthur Gordon Pym narrative of a gordon pym … 1838  Poe, …
-#>  9 9     Wuthering Heights              wuthering heights chapter … 1847  Bront…
-#> 10 10    The House of Seven Gables      the house of the seven gab… 1851  Hawth…
-#> 11 11    North and South                north and south by elizabe… 1854  Gaske…
-#> 12 12    The Woman in White             the woman in white by wilk… 1860  Colli…
-#> 13 13    Great Expectations             chapter i my father s fami… 1861  Dicke…
-#> 14 14    The Portrait of a Lady         chapter i under certain ci… 1881  James…
-#> 15 15    Treasure Island                to the hesitating purchase… 1882  Steve…
-#> 16 16    Dr Jekyll and Hyde             strange case of dr jekyll … 1886  Steve…
-#> 17 17    The Picture of Dorian Gray     the artist is the creator … 1890  Wilde…
-#> 18 18    Dracula                        chapter jonathan harker s … 1897  Stoke…
+#>    [3m[38;5;246m<chr>[39m[23m [3m[38;5;246m<chr>[39m[23m                          [3m[38;5;246m<chr>[39m[23m                       [3m[38;5;246m<chr>[39m[23m [3m[38;5;246m<chr>[39m[23m 
+#> [38;5;250m 1[39m 1     Vathek                         vathek an arabian tale by … 1786  Beckf…
+#> [38;5;250m 2[39m 2     A Sicilian Romance             a sicilian romance by ann … 1790  Radcl…
+#> [38;5;250m 3[39m 3     The Mysteries of Udulpho       the mysteries of udolpho a… 1794  Radcl…
+#> [38;5;250m 4[39m 4     The Monk: A Romance            the monk a romance by matt… 1795  Lewis…
+#> [38;5;250m 5[39m 5     Sense and Sensibility          sense and sensibility by j… 1811  Auste…
+#> [38;5;250m 6[39m 6     Frankenstein                   frankenstein or the modern… 1818  Shell…
+#> [38;5;250m 7[39m 7     Ivanhoe                        ivanhoe a romance by sir w… 1820  Scott…
+#> [38;5;250m 8[39m 8     Narrative of Arthur Gordon Pym narrative of a gordon pym … 1838  Poe, …
+#> [38;5;250m 9[39m 9     Wuthering Heights              wuthering heights chapter … 1847  Bront…
+#> [38;5;250m10[39m 10    The House of Seven Gables      the house of the seven gab… 1851  Hawth…
+#> [38;5;250m11[39m 11    North and South                north and south by elizabe… 1854  Gaske…
+#> [38;5;250m12[39m 12    The Woman in White             the woman in white by wilk… 1860  Colli…
+#> [38;5;250m13[39m 13    Great Expectations             chapter i my father s fami… 1861  Dicke…
+#> [38;5;250m14[39m 14    The Portrait of a Lady         chapter i under certain ci… 1881  James…
+#> [38;5;250m15[39m 15    Treasure Island                to the hesitating purchase… 1882  Steve…
+#> [38;5;250m16[39m 16    Dr Jekyll and Hyde             strange case of dr jekyll … 1886  Steve…
+#> [38;5;250m17[39m 17    The Picture of Dorian Gray     the artist is the creator … 1890  Wilde…
+#> [38;5;250m18[39m 18    Dracula                        chapter jonathan harker s … 1897  Stoke…
 document_by_ID(id == 1, vars = "year")
-#> # A tibble: 1 × 3
-#> # Groups:   id, text [1]
+#> [38;5;246m# A tibble: 1 × 3[39m
+#> [38;5;246m# Groups:   id, text [1][39m
 #>   id    text                                                               year 
-#>   <chr> <chr>                                                              <chr>
-#> 1 1     vathek an arabian tale by william beckford esq p vathek vathek ni… 1786
+#>   [3m[38;5;246m<chr>[39m[23m [3m[38;5;246m<chr>[39m[23m                                                              [3m[38;5;246m<chr>[39m[23m
+#> [38;5;250m1[39m 1     vathek an arabian tale by william beckford esq p vathek vathek ni… 1786
 unigram_Analysis = document_by_ID(id == 1, vars = "year")
 
 UA = unigram_Analysis %>%
@@ -118,21 +118,21 @@ UA = unigram_Analysis %>%
 UA_Count_Words = UA %>%
   count(word, sort = T)
 UA_Count_Words
-#> # A tibble: 5,396 × 3
-#> # Groups:   id [1]
+#> [38;5;246m# A tibble: 5,396 × 3[39m
+#> [38;5;246m# Groups:   id [1][39m
 #>    id    word            n
-#>    <chr> <chr>       <int>
-#>  1 1     caliph        151
-#>  2 1     vathek        125
-#>  3 1     nouronihar     87
-#>  4 1     carathis       79
-#>  5 1     thy            78
-#>  6 1     thou           72
-#>  7 1     whilst         66
-#>  8 1     bababalouk     55
-#>  9 1     gulchenrouz    54
-#> 10 1     palace         47
-#> # ℹ 5,386 more rows
+#>    [3m[38;5;246m<chr>[39m[23m [3m[38;5;246m<chr>[39m[23m       [3m[38;5;246m<int>[39m[23m
+#> [38;5;250m 1[39m 1     caliph        151
+#> [38;5;250m 2[39m 1     vathek        125
+#> [38;5;250m 3[39m 1     nouronihar     87
+#> [38;5;250m 4[39m 1     carathis       79
+#> [38;5;250m 5[39m 1     thy            78
+#> [38;5;250m 6[39m 1     thou           72
+#> [38;5;250m 7[39m 1     whilst         66
+#> [38;5;250m 8[39m 1     bababalouk     55
+#> [38;5;250m 9[39m 1     gulchenrouz    54
+#> [38;5;250m10[39m 1     palace         47
+#> [38;5;246m# ℹ 5,386 more rows[39m
 ```
 
 If you would like to know more about this package, please see the [Get
