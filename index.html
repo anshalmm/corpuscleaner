@@ -54,25 +54,25 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>The <a href="https://anshalmm.github.io/corpuscleaner/">corpuscleaner</a> package has a collection of 18 Documents cleaned and ready for use regarding Corpus Analysis. It has a <code><a href="reference/novels.html">novels()</a></code> function which has the collection consisting of:</p>
+<p>The <a href="https://anshalmm.github.io/corpuscleaner/">corpuscleaner</a> package has a collection of <code>18 Documents</code> cleaned and ready for use regarding Corpus Analysis. It has a <code><a href="reference/novels.html">novels()</a></code> function which has the collection consisting of:</p>
 <ul>
 <li>
-<code>title</code>: The Title of the Document</li>
+<code>ID</code>: ID of the Document</li>
 <li>
-<code>text</code>: The Text of the Document</li>
+<code>title</code>: Title of the Document</li>
 <li>
-<code>year</code>: The Year the Document was Published</li>
+<code>text</code>: Text of the Document</li>
 <li>
-<code>author</code>: The Author of the Document</li>
+<code>year</code>: Year the Document was Published</li>
 <li>
-<code>novel_bookshelf</code>: The Category of the Document</li>
+<code>author</code>: Author of the Document</li>
 </ul>
-<p>It also has a function <code>novels_by_ID(..., vars)</code> that consists of:</p>
+<p>It also has a function <code>novels_by_ID(ID, vars)</code> that has a <code>tibble</code> consisting of the Document’s:</p>
 <ul>
 <li><code>ID</code></li>
 <li><code>text</code></li>
 </ul>
-<p>and can add any <code>column_name</code> of your choice such as <code>year</code>, <code>author</code>, or both.</p>
+<p>and can add any <code>column_names</code> of your choice such as the <code>year</code>, <code>author</code>, or both.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -85,7 +85,7 @@
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
-<p>These are basic examples of what <code>corpuscleaner</code> can show you when combined with basic text analysis:</p>
+<p>These are basic examples of what <code>corpuscleaner</code> can do when combined with basic text analysis:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://anshalmm.github.io/corpuscleaner/">corpuscleaner</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
@@ -110,8 +110,8 @@
 <span><span class="co">#&gt;  9     1 Wuthering Heights Heathcliff and I are such a suitable pa…  1847 Bront…</span></span>
 <span><span class="co">#&gt; 10     1 Wuthering Heights A capital fellow                          1847 Bront…</span></span>
 <span><span class="co">#&gt; # ℹ 20,711 more rows</span></span></code></pre></div>
-<p>Then we can use the <code>novels_by_ID</code> function to extract the ID, text, and an additional column, author, for the document <code>Vathek</code>.</p>
-<p>We can do some frequency list text analysis on this document by finding all the unigrams in it:</p>
+<p>Here, we can use the <code>novels_by_ID</code> function to extract the ID, text, and an additional column, author, for the document <code>Vathek</code>.</p>
+<p>Additionally, we can do some frequency list text analysis on this document by finding all the unigrams in it:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/novels.html">novels</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 369,611 × 5</span></span>

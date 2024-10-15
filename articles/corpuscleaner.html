@@ -96,9 +96,9 @@ basic text analysis.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 895,663 more rows</span></span></span></code></pre></div>
 <p>It also includes a function called <code>novels_by_ID</code> which
 minimizes using the entire <code><a href="../reference/novels.html">novels()</a></code> tibble for text
-analysis, and instead pick, by ID, the document of your choice and
-column names, such as the year the novel was published, the author of
-the novel, or both.</p>
+analysis, and instead pick, by ID, the document of your choice and an
+additional column name, such as the <code>year</code> the document was
+published.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/novels.html">novels</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 369,611 × 5</span></span></span>
@@ -131,11 +131,12 @@ the novel, or both.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     5 by Dr                                       <span style="text-decoration: underline;">1</span>818</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     5 Darwin                                      <span style="text-decoration: underline;">1</span>818</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 20,383 more rows</span></span></span></code></pre></div>
-<div class="section level4">
-<h4 id="usage-in-text-analysis">Usage in Text Analysis<a class="anchor" aria-label="anchor" href="#usage-in-text-analysis"></a>
-</h4>
-<p>Aside from this, you can do higher corpus analysis such as
-tf-idf:</p>
+</div>
+<div class="section level2">
+<h2 id="usage-in-text-analysis">Usage in Text Analysis<a class="anchor" aria-label="anchor" href="#usage-in-text-analysis"></a>
+</h2>
+<p>Aside from this, you can do higher text analysis such as
+<code>tf-idf</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Using novels() to do tf-idf</span></span>
 <span><span class="co"># Part 1: Finding the commonly used words in all documents</span></span>
@@ -186,7 +187,7 @@ tf-idf:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> The Portrait of a Lady   the    <span style="text-decoration: underline;">8</span>066 <span style="text-decoration: underline;">233</span>165     1         0.034<span style="text-decoration: underline;">6</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Dracula                  the    <span style="text-decoration: underline;">7</span>865 <span style="text-decoration: underline;">161</span>799     1         0.048<span style="text-decoration: underline;">6</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 150,515 more rows</span></span></span></code></pre></div>
-<p>Or do some Topic Modeling:</p>
+<p>Or do some <code>Topic Modeling</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Using novels to do some Topic Modeling</span></span>
 <span><span class="co"># Part 1: Find the books you want to use in Topic Modeling </span></span>
@@ -283,9 +284,8 @@ tf-idf:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     1 knight 3.88<span style="color: #949494;">e</span><span style="color: #BB0000;">- 22</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     2 knight 4.70<span style="color: #949494;">e</span><span style="color: #BB0000;">- 36</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 78,730 more rows</span></span></span></code></pre></div>
-<p>Therefore, this package is useful in higher or basic Corpus
+<p>Therefore, this package is useful in higher or basic Text
 Analysis.</p>
-</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
