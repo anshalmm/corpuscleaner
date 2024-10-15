@@ -184,26 +184,6 @@ crps_tidy_doc
 crps_tidy_doc = crps_tidy_doc %>%
   relocate(novel_author_id, .after = First_Name)
 
-# Bookshelf
-crps_tidy_doc$novels_bookshelf = c("Gothic Fiction",
-                                   "Gothic Fiction",
-                                   "Gothic Romance Fiction",
-                                   "Gothic Fiction",
-                                   "Romance Fiction",
-                                   "Gothic Fiction",
-                                   "Historical Fiction",
-                                   "Gothic Fiction",
-                                   "Tradegy",
-                                   "Gothic Fiction",
-                                   "Social",
-                                   "Mystery",
-                                   "Gothic Fiction",
-                                   "Romance Fiction",
-                                   "Historical Fiction",
-                                   "Fantasy",
-                                   "Literary Fiction",
-                                   "Gothic Fiction")
-
 crps_tidy_doc = crps_tidy_doc %>%
   relocate(Year, .after = text)
 # Hardest Part: Putting all the text relative to novels meaning: The novels themselves
@@ -259,8 +239,7 @@ WH = unlist(WH)
 # deliminits it for you - VERY USEFUL IN GETTING ALL THE WORDS YOU NEED.
 
 # Tibble it into just two variables
-WF = tibble(ID = 1, title = "Wuthering Heights", text = WH, year = 1847, author = "Bronte, Emily",
-            novel_bookshelf = "Tragedy")
+WF = tibble(ID = 1, title = "Wuthering Heights", text = WH, year = 1847, author = "Bronte, Emily")
 
 # VATHEK
 # Extracting Author|Sentences
@@ -268,8 +247,7 @@ V = str_extract_all(crps_tidy_doc$text[[1]], "(?:[A-z.]+ )+")
 V = unlist(V)
 
 # Tibble it into just three variables
-TF = tibble(ID = 2, title = "Vathek", text = V, year = 1786, author = "Beckford, William",
-            novel_bookshelf = "Gothic Fiction")
+TF = tibble(ID = 2, title = "Vathek", text = V, year = 1786, author = "Beckford, William")
 
 # TREASURE ISLAND
 # Extracting Author|Sentences
@@ -277,68 +255,59 @@ TI = str_extract_all(crps_tidy_doc$text[[15]], "(?:[A-z.]+ )+")
 TI = unlist(TI)
 
 # Tibble it into just two variables
-TIF = tibble(ID = 3, title = "Treasure Island", text = TI, year = 1882, author = "Stevenson, Robert Louis",
-             novel_bookshelf = "Historical Fiction")
+TIF = tibble(ID = 3, title = "Treasure Island", text = TI, year = 1882, author = "Stevenson, Robert Louis")
 
 # The Picture of Dorian Gray
 DG = str_extract_all(crps_tidy_doc$text[[17]], "(?:[A-z.]+ )+")
 DG = unlist(DG)
 
-GF = tibble(ID = 4, title = "The Picture of Dorian Gray", text = DG, year = 1890, author = "Wilde, Oscar",
-            novel_bookshelf = "Literary Fiction")
+GF = tibble(ID = 4, title = "The Picture of Dorian Gray", text = DG, year = 1890, author = "Wilde, Oscar")
 
 # Frankestein
 FT = str_extract_all(crps_tidy_doc$text[[6]], "(?:[A-z.]+ )+")
 FT = unlist(FT)
 
-FG = tibble(ID = 5, title = "Frankenstein", text = FT, year = 1818, author = "Shelley, Mary",
-            novel_bookshelf = "Gothic Fiction")
+FG = tibble(ID = 5, title = "Frankenstein", text = FT, year = 1818, author = "Shelley, Mary")
 
 # A Sicilian Romance
 SR = str_extract_all(crps_tidy_doc$text[[2]], "(A Sicilian Romance|by Ann Radcliffe)|(?:[A-z.]+ )+")
 SR = unlist(SR)
 
-SO = tibble(ID = 6, title = "A Sicilian Romance", text = SR, year = 1790, author = "Radcliffe, Ann",
-            novel_bookshelf = "Gothic Fiction")
+SO = tibble(ID = 6, title = "A Sicilian Romance", text = SR, year = 1790, author = "Radcliffe, Ann")
 
 
 # The Mysteries of Udoplho
 MU = str_extract_all(crps_tidy_doc$text[[3]], "(?:[A-z.]+ )+")
 MU = unlist(MU)
 
-MF = tibble(ID = 7, title = "The Mysteries of Udolpho", text = MU, year = 1794, author = "Radcliffe, Ann",
-            novel_bookshelf = "Gothic Romance Fiction")
+MF = tibble(ID = 7, title = "The Mysteries of Udolpho", text = MU, year = 1794, author = "Radcliffe, Ann")
 
 # The Monk: A Romance
 TM = str_extract_all(crps_tidy_doc$text[[4]], "(?:[A-z.]+ )+")
 TM = unlist(TM)
 
-AF = tibble(ID = 8, title = "The Monk: A Romance", text = TM, year = 1795, author = "Lewis, Matthew",
-            novel_bookshelf = "Gothic Fiction")
+AF = tibble(ID = 8, title = "The Monk: A Romance", text = TM, year = 1795, author = "Lewis, Matthew")
 
 
 # Sense and Sensibility
 SS = str_extract_all(crps_tidy_doc$text[[5]], "(?:[A-z.]+ )+")
 SS = unlist(SS)
 
-SF = tibble(ID = 9, title = "Sense and Sensibility", text = SS, year = 1811, author = "Austen, Jane",
-            novel_bookshelf = "Romance Fiction")
+SF = tibble(ID = 9, title = "Sense and Sensibility", text = SS, year = 1811, author = "Austen, Jane")
 
 
 # Ivanhoe: A Romance
 IV = str_extract_all(crps_tidy_doc$text[[7]], "(?:IVANHOE  A ROMANCE|By Sir Walter Scott)|(?:[A-z.]+ )+")
 IV = unlist(IV)
 
-NF = tibble(ID = 10, title = "Ivanhoe", text = IV, year = 1820, author = "Scott, Sir Walter",
-            novel_bookshelf = "Historical Fiction")
+NF = tibble(ID = 10, title = "Ivanhoe", text = IV, year = 1820, author = "Scott, Sir Walter")
 
 
 # Narrative of A. Gordon Pym
 GP = str_extract_all(crps_tidy_doc$text[[8]], "(?:[A-z.]+ )+")
 GP = unlist(GP)
 
-PF = tibble(ID = 11, title = "Narrative of Arthur Gordon Pym", text = GP, year = 1838, author = "Poe, Edgar Allan",
-            novel_bookshelf = "Gothic Fiction")
+PF = tibble(ID = 11, title = "Narrative of Arthur Gordon Pym", text = GP, year = 1838, author = "Poe, Edgar Allan")
 
 
 # The House of Seven Gables
@@ -349,56 +318,49 @@ str_sub(crps_tidy_doc$text[[10]], start = 1, end = 1000)
 SG = str_extract_all(crps_tidy_doc$text[[10]], "(?:[A-z.]+ )+")
 SG = unlist(SG)
 
-EF = tibble(ID = 12, title = "The House of Seven Gables", text = SG, year = 1851, author = "Hawthorne, Nathaniel",
-            novel_bookshelf = "Gothic Fiction")
+EF = tibble(ID = 12, title = "The House of Seven Gables", text = SG, year = 1851, author = "Hawthorne, Nathaniel")
 
 
 # North and South
 NS = str_extract_all(crps_tidy_doc$text[[11]], "(?:[A-z.]+ )+")
 NS = unlist(NS)
 
-OF = tibble(ID = 13, title = "North and South", text = NS, year = 1854, author = "Gaskell, Elizabeth",
-            novel_bookshelf = "Social")
+OF = tibble(ID = 13, title = "North and South", text = NS, year = 1854, author = "Gaskell, Elizabeth")
 
 
 # The Woman in White
 WW = str_extract_all(crps_tidy_doc$text[[12]], "(?:[A-z.]+ )+")
 WW = unlist(WW)
 
-HF = tibble(ID = 14, title = "The Woman in White", text = WW, year = 1860, author = "Collins, Wilkie",
-            novel_bookshelf = "Mystery")
+HF = tibble(ID = 14, title = "The Woman in White", text = WW, year = 1860, author = "Collins, Wilkie")
 
 
 # Great Expectations
 GE = str_extract_all(crps_tidy_doc$text[[13]], "(?:[A-z.]+ )+")
 GE = unlist(GE)
 
-XF = tibble(ID = 15, title = "Great Expectations", text = GE, year = 1861, author = "Dickens, Charles",
-            novel_bookshelf = "Gothic Fiction")
+XF = tibble(ID = 15, title = "Great Expectations", text = GE, year = 1861, author = "Dickens, Charles")
 
 
 # The Portrait of a Lady
 PS = str_extract_all(crps_tidy_doc$text[[14]], "(?:[A-z.]+ )+")
 PS = unlist(PS)
 
-POF = tibble(ID = 16, title = "The Portrait of a Lady", text = PS, year = 1881, author = "James, Henry",
-             novel_bookshelf = "Romance Fiction")
+POF = tibble(ID = 16, title = "The Portrait of a Lady", text = PS, year = 1881, author = "James, Henry")
 
 
 # The Strange Case of Dr. Jekyll and Hyde
 JH = str_extract_all(crps_tidy_doc$text[[16]], "(?:[A-z.]+ )+")
 JH = unlist(JH)
 
-JF = tibble(ID = 17, title = "Dr Jekyll and Hyde", text = JH, year = 1886, author = "Stevenson, Robert Louis",
-            novel_bookshelf = "Fantasy")
+JF = tibble(ID = 17, title = "Dr Jekyll and Hyde", text = JH, year = 1886, author = "Stevenson, Robert Louis")
 
 
 # Dracula
 DR = str_extract_all(crps_tidy_doc$text[[18]], "(?:[A-z.]+ )+")
 DR = unlist(DR)
 
-DF = tibble(ID = 18, title = "Dracula", text = DR, year = 1897, author = "Stoker, Bram",
-            novel_bookshelf = "Gothic Fiction")
+DF = tibble(ID = 18, title = "Dracula", text = DR, year = 1897, author = "Stoker, Bram")
 
 novels_tgt = bind_rows(AF,
                        DF,
@@ -421,5 +383,9 @@ novels_tgt = bind_rows(AF,
 
 novels_tgt$text = str_trim(novels_tgt$text, "both")
 novels_tgt
+novels_tgt = novels_tgt %>%
+  arrange(ID)
+novels_tgt
 
 usethis::use_data(novels_tgt, compress = "bzip2", overwrite = TRUE)
+

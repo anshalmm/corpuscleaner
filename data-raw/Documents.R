@@ -1,4 +1,4 @@
-setwd("C:/Users/tfop2/OneDrive/Documents/r-package/corpuscleaner")
+setwd("C:/Users/tfop2/OneDrive/Documents/Anshal_Majmudar_R_Packages")
 
 # Download the librarian package
 # Load all the packages neccesary for corpus work
