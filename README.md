@@ -8,23 +8,24 @@
 
 ## Overview
 
-The `{corpuscleaner}` package has a collection of 18 Documents cleaned
+The `{corpuscleaner}` package has a collection of `18 Documents` cleaned
 and ready for use regarding Corpus Analysis. It has a `novels()`
 function which has the collection consisting of:
 
-- `title`: The Title of the Document
-- `text`: The Text of the Document
-- `year`: The Year the Document was Published
-- `author`: The Author of the Document
-- `novel_bookshelf`: The Category of the Document
+- `ID`: ID of the Document
+- `title`: Title of the Document
+- `text`: Text of the Document
+- `year`: Year the Document was Published
+- `author`: Author of the Document
 
-It also has a function `novels_by_ID(..., vars)` that consists of:
+It also has a function `novels_by_ID(ID, vars)` that has a `tibble`
+consisting of the Document’s:
 
 - `ID`
 - `text`
 
-and can add any `column_name` of your choice such as `year`, `author`,
-or both.
+and can add any `column_names` of your choice such as the `year`,
+`author`, or both.
 
 ## Installation
 
@@ -38,8 +39,8 @@ devtools::install_github("anshalmm/corpuscleaner")
 
 ## Examples
 
-These are basic examples of what `corpuscleaner` can show you when
-combined with basic text analysis:
+These are basic examples of what `corpuscleaner` can do when combined
+with basic text analysis:
 
 ``` r
 library(corpuscleaner)
@@ -71,11 +72,11 @@ WH_Text
 #> # ℹ 20,711 more rows
 ```
 
-Then we can use the `novels_by_ID` function to extract the ID, text, and
-an additional column, author, for the document `Vathek`.
+Here, we can use the `novels_by_ID` function to extract the ID, text,
+and an additional column, author, for the document `Vathek`.
 
-We can do some frequency list text analysis on this document by finding
-all the unigrams in it:
+Additionally, we can do some frequency list text analysis on this
+document by finding all the unigrams in it:
 
 ``` r
 novels()

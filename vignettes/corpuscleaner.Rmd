@@ -38,15 +38,15 @@ novels() %>%
   anti_join(get_stopwords("en", source = "smart"))
 ```
 
-It also includes a function called `novels_by_ID` which minimizes using the entire `novels()` tibble for text analysis, and instead pick, by ID, the document of your choice and column names, such as the year the novel was published, the author of the novel, or both.
+It also includes a function called `novels_by_ID` which minimizes using the entire `novels()` tibble for text analysis, and instead pick, by ID, the document of your choice and an additional column name, such as the `year` the document was published.
 
 ```{r}
 novels()
 novels_by_ID(ID = c(5, 6), vars = "year")
 ```
 
-### Usage in Text Analysis
-Aside from this, you can do higher corpus analysis such as tf-idf:
+# Usage in Text Analysis
+Aside from this, you can do higher text analysis such as `tf-idf`:
 
 ```{r}
 # Using novels() to do tf-idf
@@ -72,7 +72,7 @@ frequency_rank = put_words %>%
 frequency_rank
 ```
 
-Or do some Topic Modeling:
+Or do some `Topic Modeling`:
 
 ```{r}
 # Using novels to do some Topic Modeling
@@ -124,4 +124,4 @@ book_topics = tidy(book_chapter_LDA, matrix = "beta")
 book_topics
 ```
 
-Therefore, this package is useful in higher or basic Corpus Analysis.
+Therefore, this package is useful in higher or basic Text Analysis.
