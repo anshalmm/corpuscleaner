@@ -86,12 +86,12 @@ Or do some `Topic Modeling`:
 # Part 1: Find the books you want to use in Topic Modeling 
 # Search for Novels that have CHAPTER I... In Them 
 novels() %>%
-  filter(str_detect(text, "^CHAPTER ")) %>%
+  filter(str_detect(text, "^chapter ")) %>%
   select(title, text)
 
 # Optional: 
 # novels() %>%
-#   filter(str_detect(text, "^CHAPTER ")) %>%
+#   filter(str_detect(text, "^chapter ")) %>%
 #   select(title, text) %>%
 #   print(n = 250)
 
@@ -103,7 +103,7 @@ books = novels() %>%
 # Diving these books by chapter 
 book_chapters = books %>%
   group_by(title) %>%
-  mutate(chapter = cumsum(str_detect(text, "^CHAPTER "))) %>%
+  mutate(chapter = cumsum(str_detect(text, "^chapter "))) %>%
   filter(chapter > 0) %>%
   unite(document, title, chapter)
 
