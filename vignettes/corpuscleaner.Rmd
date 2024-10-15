@@ -28,7 +28,7 @@ library(reshape2)
 ```
 
 # Understanding corpuscleaner
-The `{corpuscleaner}` package has a tibble called `novels()` which consists of 18 cleaned documents usable for basic text analysis. 
+The `{corpuscleaner}` package has a tibble called `novels()` which consists of 18 cleaned documents usable for text analysis. 
 
 ```{r}
 novels() %>%

@@ -5,7 +5,7 @@
 \alias{novels_tgt}
 \title{18 Cleaned Documents}
 \format{
-A \code{tibble} with 369111 rows and 6 variables consisting of:
+A \code{tibble} with 369111 rows and 5 variables consisting of:
 \describe{
  \item{ID}{ID of Novels}
  \item{title}{Title of Novels}
