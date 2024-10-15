@@ -3,16 +3,16 @@ development:
   mode: auto
 template:
   bootstrap: 5
-
 reference:
 - title: Functions
   contents:
   - novels
-  - novels_by_ID
-- title: Dataset
+  - document_by_ID
+- title: Datasets
   contents:
+  - Documents
   - novels_tgt
-
 authors:
   Anshal Majmudar:
-    href: "https://github.com/anshalmm"
+    href: https://github.com/anshalmm
+
