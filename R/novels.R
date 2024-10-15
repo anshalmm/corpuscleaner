@@ -13,7 +13,7 @@
 #' novels() %>%
 #'   unnest_tokens(word, text) %>%
 #'   anti_join(get_stopwords("en", source = "smart")) %>%
-#'   count(title, word, sort = T)
+#'   count(ID, title, word, sort = T)
 novels = function(){
   A = novels_tgt
   return(A)

@@ -382,10 +382,9 @@ novels_tgt = bind_rows(AF,
                        XF)
 
 novels_tgt$text = str_trim(novels_tgt$text, "both")
-novels_tgt
+novels_tgt$text = tolower(novels_tgt$text)
 novels_tgt = novels_tgt %>%
   arrange(ID)
 novels_tgt
 
 usethis::use_data(novels_tgt, compress = "bzip2", overwrite = TRUE)
-
