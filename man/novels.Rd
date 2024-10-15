@@ -4,7 +4,7 @@
 \alias{novels}
 \title{18 Cleaned Novels}
 \format{
-A dataframe with 369111 rows and 6 variables consisting of:
+A \code{tibble} with 369111 rows and 5 variables consisting of:
 \describe{
  \item{ID}{ID of Documents}
  \item{title}{Title of Documents}

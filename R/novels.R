@@ -5,7 +5,7 @@
 #' @importFrom dplyr anti_join
 #' @importFrom dplyr count
 #' @importFrom magrittr %>%
-#' @format A dataframe with 369111 rows and 6 variables consisting of:
+#' @format A \code{tibble} with 369111 rows and 5 variables consisting of:
 #' \describe{
 #'  \item{ID}{ID of Documents}
 #'  \item{title}{Title of Documents}
