@@ -387,4 +387,5 @@ novels_tgt = novels_tgt %>%
   arrange(ID)
 novels_tgt
 
+setwd("C:/Users/tfop2/OneDrive/Documents/r-package/corpuscleaner")
 usethis::use_data(novels_tgt, compress = "bzip2", overwrite = TRUE)

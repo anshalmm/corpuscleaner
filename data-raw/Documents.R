@@ -159,4 +159,5 @@ Documents$text = str_squish(Documents$text)
 Documents$text = tolower(Documents$text)
 Documents
 
+setwd("C:/Users/tfop2/OneDrive/Documents/r-package/corpuscleaner")
 usethis::use_data(Documents, overwrite = TRUE)
