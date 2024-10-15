@@ -83,5 +83,4 @@ UA_Count_Words = UA %>%
 UA_Count_Words
 ```
 
-
 If you would like to know more about this package, please see the [Get started](https://anshalmm.github.io/corpuscleaner/articles/corpuscleaner.html) Page.  
