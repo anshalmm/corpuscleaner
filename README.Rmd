@@ -21,20 +21,22 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 ## Overview 
-The `{corpuscleaner}` package has a collection of `18 Documents` cleaned and ready for use regarding Corpus Analysis. It has a `novels()` function which has the collection consisting of: 
+The `{corpuscleaner}` package has a collection of `18 Documents` cleaned and ready for use regarding Text Analysis. It has a dataset `Documents` which has the collection consisting of: 
 
-* `ID`: ID of the Document
+* `id`: ID of the Document
 * `title`: Title of the Document
 * `text`: Text of the Document 
 * `year`: Year the Document was Published 
 * `author`: Author of the Document
 
-It also has a function `novels_by_ID(ID, vars)` that has a `tibble` consisting of the Document's: 
+Along with this, the package has a function `novels` which has a one row per line format for the `text`, along with the same variables as listed above. 
 
-* `ID`
+It also has a function `document_by_ID(..., vars)` that has a `tibble` consisting of the Document's: 
+
+* `id`
 * `text` 
 
-and can add any `column_names` of your choice such as the `year`, `author`, or both. 
+and can add any `column_names` of your choice such as the `year`, `author`, or both.
 
 ## Installation
 
@@ -53,28 +55,22 @@ These are basic examples of what `corpuscleaner` can do when combined with basic
 library(corpuscleaner)
 library(dplyr)
 library(tidytext)
+
+novels() %>%
+  unnest_tokens(word, 
+                text, 
+                token = "words") %>%
+  anti_join(get_stopwords("en", source = "smart"))
 ```
 
-Here we're using the `novels()` function and filtering it out to find the metadata of the document `Wuthering Heights`
+Here, we can use the `document_by_ID` function to extract the `id`, `text`, and an additional column, `author`, for the document `Vathek`.
 
-
-```{r}
-WH_Text = novels() %>%
-  filter(title == "Wuthering Heights")
-
-WH_Text
-```
-
-
-Here, we can use the `novels_by_ID` function to extract the ID, text, and an additional column, author, for the document `Vathek`.
-
-Additionally, we can do some frequency list text analysis on this document by finding all the unigrams in it:
-
+Additionally, we can do some `frequency list` text analysis on this document by finding all the unigrams in it:
 
 ```{r}
-novels()
-novels_by_ID(ID = 2, vars = "year")
-unigram_Analysis = novels_by_ID(ID = 2, vars = "year")
+Documents
+document_by_ID(id == 1, vars = "year")
+unigram_Analysis = document_by_ID(id == 1, vars = "year")
 
 UA = unigram_Analysis %>%
   unnest_tokens(word, 

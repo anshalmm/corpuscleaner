@@ -1,18 +1,11 @@
 #' @title 18 Cleaned Novels
 #' @description
-#' A complete cleaned tibble of 18 Documents that are usable for Corpus Analytics
+#' A complete cleaned tibble of 18 Novels that is usable for Corpus Analytics
 #' @importFrom tidytext unnest_tokens
 #' @importFrom dplyr anti_join
 #' @importFrom dplyr count
 #' @importFrom magrittr %>%
-#' @format A \code{tibble} with 369111 rows and 5 variables consisting of:
-#' \describe{
-#'  \item{ID}{ID of Documents}
-#'  \item{title}{Title of Documents}
-#'  \item{text}{Text of Documents}
-#'  \item{year}{Year Published}
-#'  \item{author}{Author of Documents}
-#' }
+#' @return A dataframe with 369111 rows and 5 variables
 #' @export
 #' @examples
 #' library(dplyr)
@@ -20,7 +13,7 @@
 #' novels() %>%
 #'   unnest_tokens(word, text) %>%
 #'   anti_join(get_stopwords("en", source = "smart")) %>%
-#'   count(ID, title, word, sort = TRUE)
+#'   count(title, word, sort = T)
 novels = function(){
   A = novels_tgt
   return(A)

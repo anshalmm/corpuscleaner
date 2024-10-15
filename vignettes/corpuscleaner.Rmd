@@ -28,28 +28,35 @@ library(reshape2)
 ```
 
 # Understanding corpuscleaner
-The `{corpuscleaner}` package has a tibble called `novels()` which consists of 18 cleaned documents usable for text analysis. 
+The `{corpuscleaner}` package has two datasets called `Documents` and `novels_tgt`, which has a one row per line format for the text. It consists of the same five variables each: 
+
+* `ID`: ID of the Document
+* `title`: Title of the Document
+* `text`: Text of the Document 
+* `year`: Year the Document was Published 
+* `author`: Author of the Document
+
+It also includes two functions: 
+
+* `novels()` which has the 18 Document collection with one row per line of text along with the same variables as above . 
+* `document_by_ID` which minimizes using the two datasets for text analysis, and instead pick, by `id`, the document of your choice and an additional column name, such as the `year` the document was published. 
 
 ```{r}
 novels() %>%
   unnest_tokens(word, 
                 text, 
                 token = "words") %>%
-  anti_join(get_stopwords("en", source = "smart"))
-```
+  anti_join(get_stopwords("en", source = "smart")) %>%
+  count(ID, title, word, sort = T)
 
-It also includes a function called `novels_by_ID` which minimizes using the entire `novels()` tibble for text analysis, and instead pick, by ID, the document of your choice and an additional column name, such as the `year` the document was published.
-
-```{r}
-novels()
-novels_by_ID(ID = c(5, 6), vars = "year")
+Documents
+document_by_ID(id == 1, vars = "year")
 ```
 
 # Usage in Text Analysis
-Aside from this, you can do higher text analysis such as `tf-idf`:
+Aside from this, you can do higher text analysis using `novels` such as `tf-idf`:
 
 ```{r}
-# Using novels() to do tf-idf
 # Part 1: Finding the commonly used words in all documents
 doc_words = novels() %>%
   unnest_tokens(word, text) %>%
@@ -64,16 +71,16 @@ put_words
 
 # Part 2: Using Zipf's law in Finding Word Frequency
 frequency_rank = put_words %>%
-                    group_by(title) %>%
-                    mutate(rank = row_number(),
-                           term_frequency = n/total) %>%
-                    ungroup()
+  group_by(title) %>%
+  mutate(rank = row_number(),
+         term_frequency = n/total) %>%
+  ungroup()
 
 frequency_rank
 ```
 
 Or do some `Topic Modeling`:
-
+  
 ```{r}
 # Using novels to do some Topic Modeling
 # Part 1: Find the books you want to use in Topic Modeling 
@@ -111,7 +118,7 @@ book_wordcounts
 
 # Part 2: Convert to LDA for Topic Modeling
 book_chapter_DTM = book_wordcounts %>%
-                            cast_dtm(document, word, n)
+  cast_dtm(document, word, n)
 
 book_chapter_DTM
 
