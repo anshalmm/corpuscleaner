@@ -209,14 +209,26 @@ the document was published.</li>
 <span><span class="co"># Part 1: Find the books you want to use in Topic Modeling </span></span>
 <span><span class="co"># Search for Novels that have CHAPTER I... In Them </span></span>
 <span><span class="fu"><a href="../reference/novels.html">novels</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">text</span>, <span class="st">"^CHAPTER "</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">text</span>, <span class="st">"^chapter "</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">text</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 2</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 variables: title &lt;chr&gt;, text &lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 352 × 2</span></span></span>
+<span><span class="co">#&gt;    title             text        </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Wuthering Heights chapter i   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Wuthering Heights chapter ii  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Wuthering Heights chapter iii </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Wuthering Heights chapter iv  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Wuthering Heights chapter v   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Wuthering Heights chapter vi  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Wuthering Heights chapter vii </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Wuthering Heights chapter viii</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Wuthering Heights chapter ix  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Wuthering Heights chapter x   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 342 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Optional: </span></span>
 <span><span class="co"># novels() %&gt;%</span></span>
-<span><span class="co">#   filter(str_detect(text, "^CHAPTER ")) %&gt;%</span></span>
+<span><span class="co">#   filter(str_detect(text, "^chapter ")) %&gt;%</span></span>
 <span><span class="co">#   select(title, text) %&gt;%</span></span>
 <span><span class="co">#   print(n = 250)</span></span>
 <span></span>
@@ -228,7 +240,7 @@ the document was published.</li>
 <span><span class="co"># Diving these books by chapter </span></span>
 <span><span class="va">book_chapters</span> <span class="op">=</span> <span class="va">books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>chapter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">text</span>, <span class="st">"^CHAPTER "</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>chapter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">text</span>, <span class="st">"^chapter "</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">chapter</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html" class="external-link">unite</a></span><span class="op">(</span><span class="va">document</span>, <span class="va">title</span>, <span class="va">chapter</span><span class="op">)</span></span>
 <span></span>
@@ -240,18 +252,30 @@ the document was published.</li>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">document</span>, <span class="va">word</span>, sort <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">book_wordcounts</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 3</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3 variables: document &lt;chr&gt;, word &lt;chr&gt;, n &lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 140,505 × 3</span></span></span>
+<span><span class="co">#&gt;    document                  word       n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Ivanhoe_27                thou      75</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> The Portrait of a Lady_19 isabel    69</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Ivanhoe_40                knight    66</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Ivanhoe_27                de        61</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> The Portrait of a Lady_40 isabel    61</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Ivanhoe_39                thou      60</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> The Portrait of a Lady_51 isabel    57</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Ivanhoe_33                thou      55</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Ivanhoe_33                prior     53</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> The Portrait of a Lady_52 isabel    53</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 140,495 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Part 2: Convert to LDA for Topic Modeling</span></span>
 <span><span class="va">book_chapter_DTM</span> <span class="op">=</span> <span class="va">book_wordcounts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://juliasilge.github.io/tidytext/reference/document_term_casters.html" class="external-link">cast_dtm</a></span><span class="op">(</span><span class="va">document</span>, <span class="va">word</span>, <span class="va">n</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">book_chapter_DTM</span></span>
-<span><span class="co">#&gt; &lt;&lt;DocumentTermMatrix (documents: 0, terms: 0)&gt;&gt;</span></span>
-<span><span class="co">#&gt; Non-/sparse entries: 0/0</span></span>
-<span><span class="co">#&gt; Sparsity           : 100%</span></span>
-<span><span class="co">#&gt; Maximal term length: 0</span></span>
+<span><span class="co">#&gt; &lt;&lt;DocumentTermMatrix (documents: 157, terms: 19685)&gt;&gt;</span></span>
+<span><span class="co">#&gt; Non-/sparse entries: 140505/2950040</span></span>
+<span><span class="co">#&gt; Sparsity           : 95%</span></span>
+<span><span class="co">#&gt; Maximal term length: 18</span></span>
 <span><span class="co">#&gt; Weighting          : term frequency (tf)</span></span>
 <span></span>
 <span><span class="co"># Use LDA in Four Topic Modeling given we have Four Documents</span></span>
@@ -262,8 +286,20 @@ the document was published.</li>
 <span><span class="co"># Finally, examine a per topic per word probabilities </span></span>
 <span><span class="va">book_topics</span> <span class="op">=</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">book_chapter_LDA</span>, matrix <span class="op">=</span> <span class="st">"beta"</span><span class="op">)</span></span>
 <span><span class="va">book_topics</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 2</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 variables: topic &lt;int&gt;, beta &lt;dbl&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 78,740 × 3</span></span></span>
+<span><span class="co">#&gt;    topic term        beta</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 thou   2.16<span style="color: #949494;">e</span><span style="color: #BB0000;">-  4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2 thou   3.70<span style="color: #949494;">e</span><span style="color: #BB0000;">-  4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3 thou   6.10<span style="color: #949494;">e</span><span style="color: #BB0000;">-172</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4 thou   1.26<span style="color: #949494;">e</span><span style="color: #BB0000;">-  2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     1 isabel 2.07<span style="color: #949494;">e</span><span style="color: #BB0000;">- 11</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     2 isabel 5.23<span style="color: #949494;">e</span><span style="color: #BB0000;">- 21</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     3 isabel 1.93<span style="color: #949494;">e</span><span style="color: #BB0000;">-  2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     4 isabel 9.50<span style="color: #949494;">e</span><span style="color: #BB0000;">-208</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     1 knight 3.88<span style="color: #949494;">e</span><span style="color: #BB0000;">- 22</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     2 knight 4.70<span style="color: #949494;">e</span><span style="color: #BB0000;">- 36</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 78,730 more rows</span></span></span></code></pre></div>
 <p>Therefore, this package is useful in higher or basic Text
 Analysis.</p>
 </div>
