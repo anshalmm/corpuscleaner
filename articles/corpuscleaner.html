@@ -71,75 +71,91 @@
 <div class="section level2">
 <h2 id="understanding-corpuscleaner">Understanding corpuscleaner<a class="anchor" aria-label="anchor" href="#understanding-corpuscleaner"></a>
 </h2>
-<p>The <a href="https://anshalmm.github.io/corpuscleaner/">corpuscleaner</a> package has a tibble called
-<code><a href="../reference/novels.html">novels()</a></code> which consists of 18 cleaned documents usable for
-text analysis.</p>
+<p>The <a href="https://anshalmm.github.io/corpuscleaner/">corpuscleaner</a> package has two datasets called
+<code>Documents</code> and <code>novels_tgt</code>, which has a one row
+per line format for the text. It consists of the same five variables
+each:</p>
+<ul>
+<li>
+<code>ID</code>: ID of the Document</li>
+<li>
+<code>title</code>: Title of the Document</li>
+<li>
+<code>text</code>: Text of the Document</li>
+<li>
+<code>year</code>: Year the Document was Published</li>
+<li>
+<code>author</code>: Author of the Document</li>
+</ul>
+<p>It also includes two functions:</p>
+<ul>
+<li>
+<code><a href="../reference/novels.html">novels()</a></code> which has the 18 Document collection with one
+row per line of text along with the same variables as above .</li>
+<li>
+<code>document_by_ID</code> which minimizes using the two datasets
+for text analysis, and instead pick, by <code>id</code>, the document of
+your choice and an additional column name, such as the <code>year</code>
+the document was published.</li>
+</ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/novels.html">novels</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://juliasilge.github.io/tidytext/reference/unnest_tokens.html" class="external-link">unnest_tokens</a></span><span class="op">(</span><span class="va">word</span>, </span>
 <span>                <span class="va">text</span>, </span>
 <span>                token <span class="op">=</span> <span class="st">"words"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html" class="external-link">anti_join</a></span><span class="op">(</span><span class="fu"><a href="https://juliasilge.github.io/tidytext/reference/get_stopwords.html" class="external-link">get_stopwords</a></span><span class="op">(</span><span class="st">"en"</span>, source <span class="op">=</span> <span class="st">"smart"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 895,673 × 5</span></span></span>
-<span><span class="co">#&gt;       ID title              year author        word     </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily wuthering</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily heights  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily chapter  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily returned </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily visit    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily landlord </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily solitary </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily neighbour</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily troubled </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     1 Wuthering Heights  <span style="text-decoration: underline;">1</span>847 Bronte, Emily beautiful</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 895,663 more rows</span></span></span></code></pre></div>
-<p>It also includes a function called <code>novels_by_ID</code> which
-minimizes using the entire <code><a href="../reference/novels.html">novels()</a></code> tibble for text
-analysis, and instead pick, by ID, the document of your choice and an
-additional column name, such as the <code>year</code> the document was
-published.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/novels.html">novels</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 369,611 × 5</span></span></span>
-<span><span class="co">#&gt;       ID title             text                                      year author</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 Wuthering Heights WUTHERING HEIGHTS                         <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     1 Wuthering Heights CHAPTER I                                 <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     1 Wuthering Heights I have just returned from a visit to my…  <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     1 Wuthering Heights This is certainly a beautiful country     <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     1 Wuthering Heights In all England                            <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     1 Wuthering Heights I do not believe that I could have fixe…  <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     1 Wuthering Heights A perfect misanthropist s heaven          <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     1 Wuthering Heights and Mr                                    <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     1 Wuthering Heights Heathcliff and I are such a suitable pa…  <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     1 Wuthering Heights A capital fellow                          <span style="text-decoration: underline;">1</span>847 Bront…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 369,601 more rows</span></span></span>
-<span><span class="fu"><a href="../reference/novels_by_ID.html">novels_by_ID</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>, vars <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 20,393 × 3</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   ID, text [19,063]</span></span></span>
-<span><span class="co">#&gt;       ID text                                        year</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     5 FRANKENSTEIN                                <span style="text-decoration: underline;">1</span>818</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     5 OR                                          <span style="text-decoration: underline;">1</span>818</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     5 THE MODERN PROMETHEUS                       <span style="text-decoration: underline;">1</span>818</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     5 BY MARY W                                   <span style="text-decoration: underline;">1</span>818</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5 SHELLEY                                     <span style="text-decoration: underline;">1</span>818</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     5 PREFACE                                     <span style="text-decoration: underline;">1</span>818</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     5 The event on which this fiction is founded  <span style="text-decoration: underline;">1</span>818</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     5 has been supposed                           <span style="text-decoration: underline;">1</span>818</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     5 by Dr                                       <span style="text-decoration: underline;">1</span>818</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     5 Darwin                                      <span style="text-decoration: underline;">1</span>818</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 20,383 more rows</span></span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html" class="external-link">anti_join</a></span><span class="op">(</span><span class="fu"><a href="https://juliasilge.github.io/tidytext/reference/get_stopwords.html" class="external-link">get_stopwords</a></span><span class="op">(</span><span class="st">"en"</span>, source <span class="op">=</span> <span class="st">"smart"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">ID</span>, <span class="va">title</span>, <span class="va">word</span>, sort <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 143,198 × 4</span></span></span>
+<span><span class="co">#&gt;       ID title                    word         n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     7 The Mysteries of Udolpho emily     <span style="text-decoration: underline;">2</span>227</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>    16 The Portrait of a Lady   isabel    <span style="text-decoration: underline;">1</span>485</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>    13 North and South          margaret  <span style="text-decoration: underline;">1</span>443</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>    13 North and South          mr         989</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>    10 Ivanhoe                  thou       947</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     7 The Mysteries of Udolpho montoni    918</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>    14 The Woman in White       sir        842</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>    16 The Portrait of a Lady   don        833</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>    14 The Woman in White       percival   749</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    15 Great Expectations       joe        747</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 143,188 more rows</span></span></span>
+<span></span>
+<span><span class="va">Documents</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 18 × 5</span></span></span>
+<span><span class="co">#&gt;    id    title                          text                        year  author</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1     Vathek                         vathek an arabian tale by … 1786  Beckf…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2     A Sicilian Romance             a sicilian romance by ann … 1790  Radcl…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 3     The Mysteries of Udulpho       the mysteries of udolpho a… 1794  Radcl…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 4     The Monk: A Romance            the monk a romance by matt… 1795  Lewis…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 5     Sense and Sensibility          sense and sensibility by j… 1811  Auste…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 6     Frankenstein                   frankenstein or the modern… 1818  Shell…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 7     Ivanhoe                        ivanhoe a romance by sir w… 1820  Scott…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 8     Narrative of Arthur Gordon Pym narrative of a gordon pym … 1838  Poe, …</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 9     Wuthering Heights              wuthering heights chapter … 1847  Bront…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 10    The House of Seven Gables      the house of the seven gab… 1851  Hawth…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> 11    North and South                north and south by elizabe… 1854  Gaske…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> 12    The Woman in White             the woman in white by wilk… 1860  Colli…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> 13    Great Expectations             chapter i my father s fami… 1861  Dicke…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> 14    The Portrait of a Lady         chapter i under certain ci… 1881  James…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> 15    Treasure Island                to the hesitating purchase… 1882  Steve…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> 16    Dr Jekyll and Hyde             strange case of dr jekyll … 1886  Steve…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> 17    The Picture of Dorian Gray     the artist is the creator … 1890  Wilde…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> 18    Dracula                        chapter jonathan harker s … 1897  Stoke…</span></span>
+<span><span class="fu"><a href="../reference/document_by_ID.html">document_by_ID</a></span><span class="op">(</span><span class="va">id</span> <span class="op">==</span> <span class="fl">1</span>, vars <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id, text [1]</span></span></span>
+<span><span class="co">#&gt;   id    text                                                               year </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1     vathek an arabian tale by william beckford esq p vathek vathek ni… 1786</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage-in-text-analysis">Usage in Text Analysis<a class="anchor" aria-label="anchor" href="#usage-in-text-analysis"></a>
 </h2>
-<p>Aside from this, you can do higher text analysis such as
-<code>tf-idf</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Using novels() to do tf-idf</span></span>
-<span><span class="co"># Part 1: Finding the commonly used words in all documents</span></span>
+<p>Aside from this, you can do higher text analysis using
+<code>novels</code> such as <code>tf-idf</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Part 1: Finding the commonly used words in all documents</span></span>
 <span><span class="va">doc_words</span> <span class="op">=</span> <span class="fu"><a href="../reference/novels.html">novels</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://juliasilge.github.io/tidytext/reference/unnest_tokens.html" class="external-link">unnest_tokens</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">word</span>, sort <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
@@ -167,10 +183,10 @@ published.</p>
 <span></span>
 <span><span class="co"># Part 2: Using Zipf's law in Finding Word Frequency</span></span>
 <span><span class="va">frequency_rank</span> <span class="op">=</span> <span class="va">put_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>                    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>                    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>rank <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html" class="external-link">row_number</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>                           term_frequency <span class="op">=</span> <span class="va">n</span><span class="op">/</span><span class="va">total</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>                    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>rank <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html" class="external-link">row_number</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>         term_frequency <span class="op">=</span> <span class="va">n</span><span class="op">/</span><span class="va">total</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">frequency_rank</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 150,525 × 6</span></span></span>
@@ -188,27 +204,15 @@ published.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Dracula                  the    <span style="text-decoration: underline;">7</span>865 <span style="text-decoration: underline;">161</span>799     1         0.048<span style="text-decoration: underline;">6</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 150,515 more rows</span></span></span></code></pre></div>
 <p>Or do some <code>Topic Modeling</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Using novels to do some Topic Modeling</span></span>
 <span><span class="co"># Part 1: Find the books you want to use in Topic Modeling </span></span>
 <span><span class="co"># Search for Novels that have CHAPTER I... In Them </span></span>
 <span><span class="fu"><a href="../reference/novels.html">novels</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">text</span>, <span class="st">"^CHAPTER "</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">text</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 293 × 2</span></span></span>
-<span><span class="co">#&gt;    title             text        </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Wuthering Heights CHAPTER I   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Wuthering Heights CHAPTER II  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Wuthering Heights CHAPTER III </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Wuthering Heights CHAPTER IV  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Wuthering Heights CHAPTER V   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Wuthering Heights CHAPTER VI  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Wuthering Heights CHAPTER VII </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Wuthering Heights CHAPTER VIII</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Wuthering Heights CHAPTER IX  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Wuthering Heights CHAPTER X   </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 283 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 variables: title &lt;chr&gt;, text &lt;chr&gt;</span></span></span>
 <span></span>
 <span><span class="co"># Optional: </span></span>
 <span><span class="co"># novels() %&gt;%</span></span>
@@ -236,30 +240,18 @@ published.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">document</span>, <span class="va">word</span>, sort <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">book_wordcounts</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 140,505 × 3</span></span></span>
-<span><span class="co">#&gt;    document                  word       n</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Ivanhoe_27                thou      75</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> The Portrait of a Lady_19 isabel    69</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Ivanhoe_40                knight    66</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Ivanhoe_27                de        61</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> The Portrait of a Lady_40 isabel    61</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Ivanhoe_39                thou      60</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> The Portrait of a Lady_51 isabel    57</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Ivanhoe_33                thou      55</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Ivanhoe_33                prior     53</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> The Portrait of a Lady_52 isabel    53</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 140,495 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3 variables: document &lt;chr&gt;, word &lt;chr&gt;, n &lt;int&gt;</span></span></span>
 <span></span>
 <span><span class="co"># Part 2: Convert to LDA for Topic Modeling</span></span>
 <span><span class="va">book_chapter_DTM</span> <span class="op">=</span> <span class="va">book_wordcounts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>                            <span class="fu"><a href="https://juliasilge.github.io/tidytext/reference/document_term_casters.html" class="external-link">cast_dtm</a></span><span class="op">(</span><span class="va">document</span>, <span class="va">word</span>, <span class="va">n</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://juliasilge.github.io/tidytext/reference/document_term_casters.html" class="external-link">cast_dtm</a></span><span class="op">(</span><span class="va">document</span>, <span class="va">word</span>, <span class="va">n</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">book_chapter_DTM</span></span>
-<span><span class="co">#&gt; &lt;&lt;DocumentTermMatrix (documents: 157, terms: 19685)&gt;&gt;</span></span>
-<span><span class="co">#&gt; Non-/sparse entries: 140505/2950040</span></span>
-<span><span class="co">#&gt; Sparsity           : 95%</span></span>
-<span><span class="co">#&gt; Maximal term length: 18</span></span>
+<span><span class="co">#&gt; &lt;&lt;DocumentTermMatrix (documents: 0, terms: 0)&gt;&gt;</span></span>
+<span><span class="co">#&gt; Non-/sparse entries: 0/0</span></span>
+<span><span class="co">#&gt; Sparsity           : 100%</span></span>
+<span><span class="co">#&gt; Maximal term length: 0</span></span>
 <span><span class="co">#&gt; Weighting          : term frequency (tf)</span></span>
 <span></span>
 <span><span class="co"># Use LDA in Four Topic Modeling given we have Four Documents</span></span>
@@ -270,20 +262,8 @@ published.</p>
 <span><span class="co"># Finally, examine a per topic per word probabilities </span></span>
 <span><span class="va">book_topics</span> <span class="op">=</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">book_chapter_LDA</span>, matrix <span class="op">=</span> <span class="st">"beta"</span><span class="op">)</span></span>
 <span><span class="va">book_topics</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 78,740 × 3</span></span></span>
-<span><span class="co">#&gt;    topic term        beta</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 thou   2.16<span style="color: #949494;">e</span><span style="color: #BB0000;">-  4</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2 thou   3.70<span style="color: #949494;">e</span><span style="color: #BB0000;">-  4</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3 thou   6.10<span style="color: #949494;">e</span><span style="color: #BB0000;">-172</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4 thou   1.26<span style="color: #949494;">e</span><span style="color: #BB0000;">-  2</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     1 isabel 2.07<span style="color: #949494;">e</span><span style="color: #BB0000;">- 11</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     2 isabel 5.23<span style="color: #949494;">e</span><span style="color: #BB0000;">- 21</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     3 isabel 1.93<span style="color: #949494;">e</span><span style="color: #BB0000;">-  2</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     4 isabel 9.50<span style="color: #949494;">e</span><span style="color: #BB0000;">-208</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     1 knight 3.88<span style="color: #949494;">e</span><span style="color: #BB0000;">- 22</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     2 knight 4.70<span style="color: #949494;">e</span><span style="color: #BB0000;">- 36</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 78,730 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 variables: topic &lt;int&gt;, beta &lt;dbl&gt;</span></span></span></code></pre></div>
 <p>Therefore, this package is useful in higher or basic Text
 Analysis.</p>
 </div>
