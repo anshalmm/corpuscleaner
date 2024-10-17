@@ -18,17 +18,14 @@ which has the collection consisting of:
 - `year`: Year the Document was Published
 - `author`: Author of the Document
 
-It also has functions relating to `text analysis` such as:
+It also has functions relating to `Text Analysis` such as:
 
 - `novels` which has a one row per line format for the `text`, along
   with the same variables as listed above.
-
 - `document_by_ID(..., vars)` that has a `tibble` consisting of the
   Document’s:
-
-- `id`
-
-- `text`
+  - `id`
+  - `text`
 
 and can add any `column_names` of your choice such as the `year`,
 `author`, or both.
