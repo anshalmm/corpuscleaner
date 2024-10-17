@@ -106,8 +106,8 @@ the document was published.</li>
 <li><code>unnest_N4_grams</code></li>
 <li><code>unnest_N5_grams</code></li>
 </ul>
-<p>These are examples of basic Text Analysis of the datasets using the
-<code><a href="../reference/novels.html">novels()</a></code> and <code>document_by_ID</code> functions.</p>
+<p>Here are some examples of basic Text Analysis of the datasets using
+the <code><a href="../reference/novels.html">novels()</a></code> and <code>document_by_ID</code> functions.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># novels()</span></span>
 <span><span class="fu"><a href="../reference/novels.html">novels</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -154,12 +154,12 @@ the document was published.</li>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> 16    Dr Jekyll and Hyde             strange case of dr jekyll … 1886  Steve…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> 17    The Picture of Dorian Gray     the artist is the creator … 1890  Wilde…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> 18    Dracula                        chapter jonathan harker s … 1897  Stoke…</span></span>
-<span><span class="fu"><a href="../reference/document_by_ID.html">document_by_ID</a></span><span class="op">(</span><span class="va">id</span> <span class="op">==</span> <span class="fl">1</span>, vars <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span> </span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 3</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id, text [1]</span></span></span>
-<span><span class="co">#&gt;   id    text                                                               year </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1     vathek an arabian tale by william beckford esq p vathek vathek ni… 1786</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/document_by_ID.html">document_by_ID</a></span><span class="op">(</span><span class="va">id</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [1]</span></span></span>
+<span><span class="co">#&gt;   id    title  text                                                 year  author</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1     Vathek vathek an arabian tale by william beckford esq p va… 1786  Beckf…</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="frequency-lists">Frequency Lists<a class="anchor" aria-label="anchor" href="#frequency-lists"></a>
@@ -168,8 +168,7 @@ the document was published.</li>
 functions</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Unigram Analysis</span></span>
-<span><span class="co"># Load the Documents dataset </span></span>
-<span><span class="fu">corpuscleaner</span><span class="fu">::</span><span class="va"><a href="../reference/Documents.html">Documents</a></span></span>
+<span><span class="va">Documents</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 18 × 5</span></span></span>
 <span><span class="co">#&gt;    id    title                          text                        year  author</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
@@ -191,11 +190,13 @@ functions</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> 16    Dr Jekyll and Hyde             strange case of dr jekyll … 1886  Steve…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> 17    The Picture of Dorian Gray     the artist is the creator … 1890  Wilde…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> 18    Dracula                        chapter jonathan harker s … 1897  Stoke…</span></span>
-<span><span class="va">UAnalysis</span> <span class="op">=</span> <span class="fu"><a href="../reference/unnest_unigrams.html">unnest_unigrams</a></span><span class="op">(</span><span class="va">id</span> <span class="op">==</span> <span class="fl">7</span><span class="op">)</span></span>
+<span><span class="va">Text</span> <span class="op">=</span> <span class="fu"><a href="../reference/document_by_ID.html">document_by_ID</a></span><span class="op">(</span><span class="va">id</span> <span class="op">==</span> <span class="fl">7</span><span class="op">)</span> </span>
+<span><span class="va">UAnalysis</span> <span class="op">=</span> <span class="fu"><a href="../reference/unnest_unigrams.html">unnest_unigrams</a></span><span class="op">(</span><span class="va">Text</span><span class="op">)</span></span>
 <span><span class="va">UWords</span> <span class="op">=</span> <span class="va">UAnalysis</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html" class="external-link">anti_join</a></span><span class="op">(</span><span class="fu"><a href="https://juliasilge.github.io/tidytext/reference/get_stopwords.html" class="external-link">get_stopwords</a></span><span class="op">(</span><span class="st">"en"</span>, source <span class="op">=</span> <span class="st">"smart"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">UWords</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 76,089 × 5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [1]</span></span></span>
 <span><span class="co">#&gt;    id    title   author            year  word     </span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 7     Ivanhoe Scott, Sir Walter 1820  ivanhoe  </span></span>
@@ -213,61 +214,65 @@ functions</p>
 <span><span class="va">UCount</span> <span class="op">=</span> <span class="va">UWords</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
 <span><span class="va">UCount</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11,844 × 2</span></span></span>
-<span><span class="co">#&gt;    word        n</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> thou      947</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> thy       578</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> de        563</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> knight    547</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> thee      451</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> cedric    339</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> good      298</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> rebecca   298</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> saxon     282</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> master    268</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11,844 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [1]</span></span></span>
+<span><span class="co">#&gt;    id    word        n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 7     thou      947</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 7     thy       578</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 7     de        563</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 7     knight    547</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 7     thee      451</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 7     cedric    339</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 7     good      298</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 7     rebecca   298</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 7     saxon     282</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 7     master    268</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11,834 more rows</span></span></span>
 <span></span>
 <span><span class="co"># Bigram Analysis</span></span>
-<span><span class="va">BAnalysis</span> <span class="op">=</span> <span class="fu"><a href="../reference/unnest_bigrams.html">unnest_bigrams</a></span><span class="op">(</span><span class="va">id</span> <span class="op">==</span> <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">WHText</span> <span class="op">=</span> <span class="fu"><a href="../reference/document_by_ID.html">document_by_ID</a></span><span class="op">(</span><span class="va">id</span> <span class="op">==</span> <span class="fl">9</span><span class="op">)</span></span>
+<span><span class="va">BAnalysis</span> <span class="op">=</span> <span class="fu"><a href="../reference/unnest_bigrams.html">unnest_bigrams</a></span><span class="op">(</span><span class="va">WHText</span><span class="op">)</span></span>
 <span><span class="va">BWords</span> <span class="op">=</span> <span class="va">BAnalysis</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate</a></span><span class="op">(</span><span class="va">token_two</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"word1"</span>, <span class="st">"word2"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">" "</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">word1</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu">stopwords</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stopwords/man/stopwords.html" class="external-link">stopwords</a></span><span class="op">(</span><span class="st">"en"</span>, source <span class="op">=</span> <span class="st">"smart"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">word2</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu">stopwords</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stopwords/man/stopwords.html" class="external-link">stopwords</a></span><span class="op">(</span><span class="st">"en"</span>, source <span class="op">=</span> <span class="st">"smart"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html" class="external-link">unite</a></span><span class="op">(</span><span class="va">token_two</span>, <span class="va">word1</span>, <span class="va">word2</span>, sep <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span>
 <span><span class="va">BWords</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6,532 × 5</span></span></span>
-<span><span class="co">#&gt;    id    title               author         year  token_two        </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 4     The Monk: A Romance Lewis, Matthew 1795  lewis somnia     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 4     The Monk: A Romance Lewis, Matthew 1795  terrores magicos </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 4     The Monk: A Romance Lewis, Matthew 1795  miracula sagas   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 4     The Monk: A Romance Lewis, Matthew 1795  nocturnos lemures</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 4     The Monk: A Romance Lewis, Matthew 1795  portentaque horat</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 4     The Monk: A Romance Lewis, Matthew 1795  dreams magic     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 4     The Monk: A Romance Lewis, Matthew 1795  terrors spells   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 4     The Monk: A Romance Lewis, Matthew 1795  power witches    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 4     The Monk: A Romance Lewis, Matthew 1795  hour preface     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 4     The Monk: A Romance Lewis, Matthew 1795  horace ep        </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 6,522 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5,640 × 5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [1]</span></span></span>
+<span><span class="co">#&gt;    id    title             author        year  token_two            </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 9     Wuthering Heights Bronte, Emily 1847  wuthering heights    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 9     Wuthering Heights Bronte, Emily 1847  mr heathcliff        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 9     Wuthering Heights Bronte, Emily 1847  capital fellow       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 9     Wuthering Heights Bronte, Emily 1847  eyes withdraw        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 9     Wuthering Heights Bronte, Emily 1847  fingers sheltered    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 9     Wuthering Heights Bronte, Emily 1847  mr lockwood          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 9     Wuthering Heights Bronte, Emily 1847  tenant sir           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 9     Wuthering Heights Bronte, Emily 1847  thrushcross grange   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 9     Wuthering Heights Bronte, Emily 1847  thrushcross grange   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 9     Wuthering Heights Bronte, Emily 1847  sympathising movement</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5,630 more rows</span></span></span>
 <span></span>
 <span><span class="va">BCount</span> <span class="op">=</span> <span class="va">BWords</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">token_two</span>, sort <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
 <span><span class="va">BCount</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5,894 × 2</span></span></span>
-<span><span class="co">#&gt;    token_two          n</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> st clare          35</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> las cisternas     21</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> don ramirez       15</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> don christoval    13</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> de las            12</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> st ursula         12</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> de medina         11</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> don gaston        11</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> don raymond       11</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> marquis de        11</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5,884 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5,092 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   id [1]</span></span></span>
+<span><span class="co">#&gt;    id    token_two             n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 9     mr heathcliff        49</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 9     wuthering heights    35</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 9     mrs linton           30</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 9     mr linton            26</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 9     young lady           23</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 9     miss cathy           19</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 9     mr earnshaw          18</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 9     mrs dean             18</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 9     miss catherine       15</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 9     mrs heathcliff       14</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 5,082 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage-in-text-analysis">Usage in Text Analysis<a class="anchor" aria-label="anchor" href="#usage-in-text-analysis"></a>

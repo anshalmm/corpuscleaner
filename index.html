@@ -88,6 +88,7 @@
 <li><code>unnest_N4_grams</code></li>
 <li><code>unnest_N5_grams</code></li>
 </ul>
+<p>These functions can take in any <code>tibble</code> made from the <code>document_by_ID</code> function.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -148,32 +149,34 @@
 <span><span class="co">#&gt; 16 16    Dr Jekyll and Hyde             strange case of dr jekyll … 1886  Steve…</span></span>
 <span><span class="co">#&gt; 17 17    The Picture of Dorian Gray     the artist is the creator … 1890  Wilde…</span></span>
 <span><span class="co">#&gt; 18 18    Dracula                        chapter jonathan harker s … 1897  Stoke…</span></span>
-<span><span class="fu"><a href="reference/document_by_ID.html">document_by_ID</a></span><span class="op">(</span><span class="va">id</span> <span class="op">==</span> <span class="fl">1</span>, vars <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 1 × 3</span></span>
-<span><span class="co">#&gt; # Groups:   id, text [1]</span></span>
-<span><span class="co">#&gt;   id    text                                                               year </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                                                              &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 1     vathek an arabian tale by william beckford esq p vathek vathek ni… 1786</span></span>
+<span><span class="fu"><a href="reference/document_by_ID.html">document_by_ID</a></span><span class="op">(</span><span class="va">id</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 5</span></span>
+<span><span class="co">#&gt; # Groups:   id [1]</span></span>
+<span><span class="co">#&gt;   id    title  text                                                 year  author</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;                                                &lt;chr&gt; &lt;chr&gt; </span></span>
+<span><span class="co">#&gt; 1 1     Vathek vathek an arabian tale by william beckford esq p va… 1786  Beckf…</span></span>
 <span></span>
 <span><span class="co"># Frequency List</span></span>
-<span><span class="va">unigram_Analysis</span> <span class="op">=</span> <span class="fu"><a href="reference/unnest_unigrams.html">unnest_unigrams</a></span><span class="op">(</span><span class="va">id</span> <span class="op">==</span> <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">VText</span> <span class="op">=</span> <span class="fu"><a href="reference/document_by_ID.html">document_by_ID</a></span><span class="op">(</span><span class="va">id</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="va">unigram_Analysis</span> <span class="op">=</span> <span class="fu"><a href="reference/unnest_unigrams.html">unnest_unigrams</a></span><span class="op">(</span><span class="va">VText</span><span class="op">)</span></span>
 <span><span class="va">UA</span> <span class="op">=</span> <span class="va">unigram_Analysis</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html" class="external-link">anti_join</a></span><span class="op">(</span><span class="fu"><a href="https://juliasilge.github.io/tidytext/reference/get_stopwords.html" class="external-link">get_stopwords</a></span><span class="op">(</span><span class="st">"en"</span>, source <span class="op">=</span> <span class="st">"smart"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">UA</span></span>
-<span><span class="co">#&gt; # A tibble: 55,650 × 5</span></span>
-<span><span class="co">#&gt;    id    title               author         year  word     </span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;               &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;    </span></span>
-<span><span class="co">#&gt;  1 4     The Monk: A Romance Lewis, Matthew 1795  monk     </span></span>
-<span><span class="co">#&gt;  2 4     The Monk: A Romance Lewis, Matthew 1795  romance  </span></span>
-<span><span class="co">#&gt;  3 4     The Monk: A Romance Lewis, Matthew 1795  matthew  </span></span>
-<span><span class="co">#&gt;  4 4     The Monk: A Romance Lewis, Matthew 1795  lewis    </span></span>
-<span><span class="co">#&gt;  5 4     The Monk: A Romance Lewis, Matthew 1795  somnia   </span></span>
-<span><span class="co">#&gt;  6 4     The Monk: A Romance Lewis, Matthew 1795  terrores </span></span>
-<span><span class="co">#&gt;  7 4     The Monk: A Romance Lewis, Matthew 1795  magicos  </span></span>
-<span><span class="co">#&gt;  8 4     The Monk: A Romance Lewis, Matthew 1795  miracula </span></span>
-<span><span class="co">#&gt;  9 4     The Monk: A Romance Lewis, Matthew 1795  sagas    </span></span>
-<span><span class="co">#&gt; 10 4     The Monk: A Romance Lewis, Matthew 1795  nocturnos</span></span>
-<span><span class="co">#&gt; # ℹ 55,640 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 15,138 × 5</span></span>
+<span><span class="co">#&gt; # Groups:   id [1]</span></span>
+<span><span class="co">#&gt;    id    title  author            year  word    </span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;             &lt;chr&gt; &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt;  1 1     Vathek Beckford, William 1786  vathek  </span></span>
+<span><span class="co">#&gt;  2 1     Vathek Beckford, William 1786  arabian </span></span>
+<span><span class="co">#&gt;  3 1     Vathek Beckford, William 1786  tale    </span></span>
+<span><span class="co">#&gt;  4 1     Vathek Beckford, William 1786  william </span></span>
+<span><span class="co">#&gt;  5 1     Vathek Beckford, William 1786  beckford</span></span>
+<span><span class="co">#&gt;  6 1     Vathek Beckford, William 1786  esq     </span></span>
+<span><span class="co">#&gt;  7 1     Vathek Beckford, William 1786  vathek  </span></span>
+<span><span class="co">#&gt;  8 1     Vathek Beckford, William 1786  vathek  </span></span>
+<span><span class="co">#&gt;  9 1     Vathek Beckford, William 1786  ninth   </span></span>
+<span><span class="co">#&gt; 10 1     Vathek Beckford, William 1786  caliph  </span></span>
+<span><span class="co">#&gt; # ℹ 15,128 more rows</span></span></code></pre></div>
 <p>If you would like to know more about this package, please see the <a href="https://anshalmm.github.io/corpuscleaner/articles/corpuscleaner.html">Get started</a> Page.</p>
 </div>
 </div>
