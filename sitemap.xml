@@ -13,5 +13,10 @@
 <url><loc>https://anshalmm.github.io/corpuscleaner/reference/index.html</loc></url>
 <url><loc>https://anshalmm.github.io/corpuscleaner/reference/novels.html</loc></url>
 <url><loc>https://anshalmm.github.io/corpuscleaner/reference/novels_tgt.html</loc></url>
+<url><loc>https://anshalmm.github.io/corpuscleaner/reference/unnest_N4_grams.html</loc></url>
+<url><loc>https://anshalmm.github.io/corpuscleaner/reference/unnest_N5_grams.html</loc></url>
+<url><loc>https://anshalmm.github.io/corpuscleaner/reference/unnest_bigrams.html</loc></url>
+<url><loc>https://anshalmm.github.io/corpuscleaner/reference/unnest_trigrams.html</loc></url>
+<url><loc>https://anshalmm.github.io/corpuscleaner/reference/unnest_unigrams.html</loc></url>
 </urlset>
 
