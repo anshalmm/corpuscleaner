@@ -29,14 +29,25 @@ The `{corpuscleaner}` package has a collection of `18 Documents` cleaned and rea
 * `year`: Year the Document was Published 
 * `author`: Author of the Document
 
-Along with this, the package has a function `novels` which has a one row per line format for the `text`, along with the same variables as listed above. 
 
-It also has a function `document_by_ID(..., vars)` that has a `tibble` consisting of the Document's: 
+It also has functions relating to `text analysis` such as:
+
+* `novels` which has a one row per line format for the `text`, along with the same variables as listed above.
+* `document_by_ID(..., vars)` that has a `tibble` consisting of the Document's: 
 
 * `id`
 * `text` 
 
 and can add any `column_names` of your choice such as the `year`, `author`, or both.
+
+Alongside this, there are `Frequency List` functions relative to the `Documents` dataset : 
+
+* `unnest_unigrams`
+* `unnest_bigrams`
+* `unnest_trigrams`
+* `unnest_N4_grams`
+* `unnest_N5_grams`
+
 
 ## Installation
 
@@ -47,40 +58,28 @@ You can install the development version of corpuscleaner from [GitHub](https://g
 devtools::install_github("anshalmm/corpuscleaner")
 ```
 
-## Examples
-
-These are basic examples of what `corpuscleaner` can do when combined with basic text analysis:
+## Usage
 
 ```{r example}
 library(corpuscleaner)
 library(dplyr)
 library(tidytext)
-
+# novels() 
 novels() %>%
   unnest_tokens(word, 
                 text, 
                 token = "words") %>%
   anti_join(get_stopwords("en", source = "smart"))
-```
 
-Here, we can use the `document_by_ID` function to extract the `id`, `text`, and an additional column, `author`, for the document `Vathek`.
-
-Additionally, we can do some `frequency list` text analysis on this document by finding all the unigrams in it:
-
-```{r}
+# document_by_ID
 Documents
 document_by_ID(id == 1, vars = "year")
-unigram_Analysis = document_by_ID(id == 1, vars = "year")
 
+# Frequency List
+unigram_Analysis = unnest_unigrams(id == 4)
 UA = unigram_Analysis %>%
-  unnest_tokens(word, 
-                text, 
-                token = "words") %>%
-  anti_join(get_stopwords("en", source = "smart")) 
-
-UA_Count_Words = UA %>%
-  count(word, sort = T)
-UA_Count_Words
+  anti_join(get_stopwords("en", source = "smart"))
+UA
 ```
 
 If you would like to know more about this package, please see the [Get started](https://anshalmm.github.io/corpuscleaner/articles/corpuscleaner.html) Page.  

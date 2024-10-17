@@ -18,18 +18,29 @@ which has the collection consisting of:
 - `year`: Year the Document was Published
 - `author`: Author of the Document
 
-Along with this, the package has a function `novels` which has a one row
-per line format for the `text`, along with the same variables as listed
-above.
+It also has functions relating to `text analysis` such as:
 
-It also has a function `document_by_ID(..., vars)` that has a `tibble`
-consisting of the Document’s:
+- `novels` which has a one row per line format for the `text`, along
+  with the same variables as listed above.
+
+- `document_by_ID(..., vars)` that has a `tibble` consisting of the
+  Document’s:
 
 - `id`
+
 - `text`
 
 and can add any `column_names` of your choice such as the `year`,
 `author`, or both.
+
+Alongside this, there are `Frequency List` functions relative to the
+`Documents` dataset :
+
+- `unnest_unigrams`
+- `unnest_bigrams`
+- `unnest_trigrams`
+- `unnest_N4_grams`
+- `unnest_N5_grams`
 
 ## Installation
 
@@ -41,16 +52,13 @@ You can install the development version of corpuscleaner from
 devtools::install_github("anshalmm/corpuscleaner")
 ```
 
-## Examples
-
-These are basic examples of what `corpuscleaner` can do when combined
-with basic text analysis:
+## Usage
 
 ``` r
 library(corpuscleaner)
 library(dplyr)
 library(tidytext)
-
+# novels() 
 novels() %>%
   unnest_tokens(word, 
                 text, 
@@ -70,15 +78,8 @@ novels() %>%
 #>  9     1 Wuthering Heights  1847 Bronte, Emily troubled 
 #> 10     1 Wuthering Heights  1847 Bronte, Emily beautiful
 #> # ℹ 895,663 more rows
-```
 
-Here, we can use the `document_by_ID` function to extract the `id`,
-`text`, and an additional column, `author`, for the document `Vathek`.
-
-Additionally, we can do some `frequency list` text analysis on this
-document by finding all the unigrams in it:
-
-``` r
+# document_by_ID
 Documents
 #> # A tibble: 18 × 5
 #>    id    title                          text                        year  author
@@ -107,32 +108,26 @@ document_by_ID(id == 1, vars = "year")
 #>   id    text                                                               year 
 #>   <chr> <chr>                                                              <chr>
 #> 1 1     vathek an arabian tale by william beckford esq p vathek vathek ni… 1786
-unigram_Analysis = document_by_ID(id == 1, vars = "year")
 
+# Frequency List
+unigram_Analysis = unnest_unigrams(id == 4)
 UA = unigram_Analysis %>%
-  unnest_tokens(word, 
-                text, 
-                token = "words") %>%
-  anti_join(get_stopwords("en", source = "smart")) 
-
-UA_Count_Words = UA %>%
-  count(word, sort = T)
-UA_Count_Words
-#> # A tibble: 5,396 × 3
-#> # Groups:   id [1]
-#>    id    word            n
-#>    <chr> <chr>       <int>
-#>  1 1     caliph        151
-#>  2 1     vathek        125
-#>  3 1     nouronihar     87
-#>  4 1     carathis       79
-#>  5 1     thy            78
-#>  6 1     thou           72
-#>  7 1     whilst         66
-#>  8 1     bababalouk     55
-#>  9 1     gulchenrouz    54
-#> 10 1     palace         47
-#> # ℹ 5,386 more rows
+  anti_join(get_stopwords("en", source = "smart"))
+UA
+#> # A tibble: 55,650 × 5
+#>    id    title               author         year  word     
+#>    <chr> <chr>               <chr>          <chr> <chr>    
+#>  1 4     The Monk: A Romance Lewis, Matthew 1795  monk     
+#>  2 4     The Monk: A Romance Lewis, Matthew 1795  romance  
+#>  3 4     The Monk: A Romance Lewis, Matthew 1795  matthew  
+#>  4 4     The Monk: A Romance Lewis, Matthew 1795  lewis    
+#>  5 4     The Monk: A Romance Lewis, Matthew 1795  somnia   
+#>  6 4     The Monk: A Romance Lewis, Matthew 1795  terrores 
+#>  7 4     The Monk: A Romance Lewis, Matthew 1795  magicos  
+#>  8 4     The Monk: A Romance Lewis, Matthew 1795  miracula 
+#>  9 4     The Monk: A Romance Lewis, Matthew 1795  sagas    
+#> 10 4     The Monk: A Romance Lewis, Matthew 1795  nocturnos
+#> # ℹ 55,640 more rows
 ```
 
 If you would like to know more about this package, please see the [Get

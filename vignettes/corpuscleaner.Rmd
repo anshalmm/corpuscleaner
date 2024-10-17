@@ -28,20 +28,32 @@ library(reshape2)
 ```
 
 # Understanding corpuscleaner
-The `{corpuscleaner}` package has two datasets called `Documents` and `novels_tgt`, which has a one row per line format for the text. It consists of the same five variables each: 
 
-* `ID`: ID of the Document
-* `title`: Title of the Document
-* `text`: Text of the Document 
-* `year`: Year the Document was Published 
-* `author`: Author of the Document
+The `{corpuscleaner}` package has two datasets called `Documents` and `novels_tgt`, which has a one row per line format for the text. It consists of the same five variables each:
 
-It also includes two functions: 
+-   `ID`: ID of the Document
+-   `title`: Title of the Document
+-   `text`: Text of the Document
+-   `year`: Year the Document was Published
+-   `author`: Author of the Document
 
-* `novels()` which has the 18 Document collection with one row per line of text along with the same variables as above . 
-* `document_by_ID` which minimizes using the two datasets for text analysis, and instead pick, by `id`, the document of your choice and an additional column name, such as the `year` the document was published. 
+It also includes two functions relative to Text Analysis:
+
+-   `novels()` which has the 18 Document collection with one row per line of text along with the same variables as above .
+-   `document_by_ID` which minimizes using the two datasets for text analysis, and instead pick, by `id`, the document of your choice and an additional column name, such as the `year` the document was published.
+
+And Frequency Lists: 
+
+* `unnest_unigrams` 
+* `unnest_bigrams` 
+* `unnest_trigrams` 
+* `unnest_N4_grams` 
+* `unnest_N5_grams`
+
+These are examples of basic Text Analysis of the datasets using the `novels()` and `document_by_ID` functions.
 
 ```{r}
+# novels()
 novels() %>%
   unnest_tokens(word, 
                 text, 
@@ -49,11 +61,43 @@ novels() %>%
   anti_join(get_stopwords("en", source = "smart")) %>%
   count(ID, title, word, sort = T)
 
+# document_by_ID
 Documents
-document_by_ID(id == 1, vars = "year")
+document_by_ID(id == 1, vars = "year") 
+```
+
+# Frequency Lists
+You can find frequency lists using the `Frequency List` functions
+
+```{r}
+# Unigram Analysis
+# Load the Documents dataset 
+corpuscleaner::Documents
+UAnalysis = unnest_unigrams(id == 7)
+UWords = UAnalysis %>%
+  anti_join(get_stopwords("en", source = "smart"))
+UWords
+
+UCount = UWords %>%
+  count(word, sort = T)
+UCount
+
+# Bigram Analysis
+BAnalysis = unnest_bigrams(id == 4)
+BWords = BAnalysis %>%
+  separate(token_two, c("word1", "word2"), sep = " ") %>%
+  filter(!(word1 %in% stopwords::stopwords("en", source = "smart"))) %>%
+  filter(!(word2 %in% stopwords::stopwords("en", source = "smart"))) %>%
+  unite(token_two, word1, word2, sep = " ")
+BWords
+
+BCount = BWords %>%
+  count(token_two, sort = T)
+BCount
 ```
 
 # Usage in Text Analysis
+
 Aside from this, you can do higher text analysis using `novels` such as `tf-idf`:
 
 ```{r}
@@ -80,7 +124,7 @@ frequency_rank
 ```
 
 Or do some `Topic Modeling`:
-  
+
 ```{r}
 # Using novels to do some Topic Modeling
 # Part 1: Find the books you want to use in Topic Modeling 
