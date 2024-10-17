@@ -42,7 +42,7 @@ It also includes two functions relative to Text Analysis:
 -   `novels()` which has the 18 Document collection with one row per line of text along with the same variables as above .
 -   `document_by_ID` which minimizes using the two datasets for text analysis, and instead pick, by `id`, the document of your choice and an additional column name, such as the `year` the document was published.
 
-And Frequency Lists: 
+And functions relative to `Frequency Lists`: 
 
 * `unnest_unigrams` 
 * `unnest_bigrams` 
