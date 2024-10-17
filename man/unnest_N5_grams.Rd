@@ -14,7 +14,7 @@ A \code{tibble} with 5 variables:
 }
 }
 \usage{
-unnest_N5_grams(...)
+unnest_N5_grams(data, args, ...)
 }
 \arguments{
 \item{...}{Input in the `id` of your choice from the `Documents` dataset}
@@ -26,5 +26,6 @@ Mulitword combination of `5 tokens`
 Tokenizing the text into 5 units (Words)
 }
 \examples{
-unnest_N5_grams(id == 2)
+N5Document = document_by_ID(id == 18)
+unnest_N5_grams(N5Document)
 }

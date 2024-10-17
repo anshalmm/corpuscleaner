@@ -14,7 +14,7 @@ A \code{tibble} with 5 variables:
 }
 }
 \usage{
-unnest_bigrams(...)
+unnest_bigrams(data, args, ...)
 }
 \arguments{
 \item{...}{Input in the `id` of your choice from the `Documents` dataset}
@@ -26,5 +26,6 @@ Mulitword combination of `2 tokens`
 Tokenizing the text into 2 units (Words)
 }
 \examples{
-unnest_bigrams(id == 5)
+BDocument = document_by_ID(id == 5)
+unnest_bigrams(BDocument)
 }

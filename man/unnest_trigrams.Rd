@@ -14,7 +14,7 @@ A \code{tibble} with 5 variables:
 }
 }
 \usage{
-unnest_trigrams(...)
+unnest_trigrams(data, args, ...)
 }
 \arguments{
 \item{...}{Input in the `id` of your choice from the `Documents` dataset}
@@ -26,5 +26,6 @@ Mulitword combination of `3 tokens`
 Tokenizing the text into 3 units (Words)
 }
 \examples{
-unnest_trigrams(id == 7)
+TDocument = document_by_ID(id == 7)
+unnest_trigrams(TDocument)
 }

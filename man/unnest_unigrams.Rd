@@ -14,7 +14,7 @@ A \code{tibble} with 5 variables:
 }
 }
 \usage{
-unnest_unigrams(...)
+unnest_unigrams(data, args, ...)
 }
 \arguments{
 \item{...}{Input in the `id` of your choice from the `Documents` dataset}
@@ -26,5 +26,6 @@ Splitting text into `1 token`
 Tokenizing the text into 1 unit (Word)
 }
 \examples{
-unnest_unigrams(id == 1)
+UDocument = document_by_ID(id == 1)
+unnest_unigrams(UDocument)
 }

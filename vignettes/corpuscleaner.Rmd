@@ -50,7 +50,7 @@ And functions relative to `Frequency Lists`:
 * `unnest_N4_grams` 
 * `unnest_N5_grams`
 
-These are examples of basic Text Analysis of the datasets using the `novels()` and `document_by_ID` functions.
+Here are some examples of basic Text Analysis of the datasets using the `novels()` and `document_by_ID` functions.
 
 ```{r}
 # novels()
@@ -63,7 +63,7 @@ novels() %>%
 
 # document_by_ID
 Documents
-document_by_ID(id == 1, vars = "year") 
+document_by_ID(id == 1) 
 ```
 
 # Frequency Lists
@@ -71,9 +71,9 @@ You can find frequency lists using the `Frequency List` functions
 
 ```{r}
 # Unigram Analysis
-# Load the Documents dataset 
-corpuscleaner::Documents
-UAnalysis = unnest_unigrams(id == 7)
+Documents
+Text = document_by_ID(id == 7) 
+UAnalysis = unnest_unigrams(Text)
 UWords = UAnalysis %>%
   anti_join(get_stopwords("en", source = "smart"))
 UWords
@@ -83,7 +83,8 @@ UCount = UWords %>%
 UCount
 
 # Bigram Analysis
-BAnalysis = unnest_bigrams(id == 4)
+WHText = document_by_ID(id == 9)
+BAnalysis = unnest_bigrams(WHText)
 BWords = BAnalysis %>%
   separate(token_two, c("word1", "word2"), sep = " ") %>%
   filter(!(word1 %in% stopwords::stopwords("en", source = "smart"))) %>%

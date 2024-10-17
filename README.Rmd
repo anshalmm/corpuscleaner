@@ -47,6 +47,7 @@ Alongside this, there are `Frequency List` functions relative to the `Documents`
 * `unnest_N4_grams`
 * `unnest_N5_grams`
 
+These functions can take in any `tibble` made from the `document_by_ID` function. 
 
 ## Installation
 
@@ -72,10 +73,11 @@ novels() %>%
 
 # document_by_ID
 Documents
-document_by_ID(id == 1, vars = "year")
+document_by_ID(id == 1)
 
 # Frequency List
-unigram_Analysis = unnest_unigrams(id == 4)
+VText = document_by_ID(id == 1) 
+unigram_Analysis = unnest_unigrams(VText)
 UA = unigram_Analysis %>%
   anti_join(get_stopwords("en", source = "smart"))
 UA

@@ -4,7 +4,7 @@
 \alias{document_by_ID}
 \title{Documents Extraction}
 \usage{
-document_by_ID(..., vars)
+document_by_ID(...)
 }
 \arguments{
 \item{...}{Input any ID (i.e., 1:18) from the `Documents` dataset}
@@ -12,7 +12,7 @@ document_by_ID(..., vars)
 \item{vars}{Input any column variable from the `Documents` dataset}
 }
 \value{
-A \code{tibble} with `id`, `text`, and then any column variable of your choice
+A \code{tibble} with `id`, and then any column variable of your choice
 }
 \description{
 This function allows you to extract the document of your choice based on the title you choose along with

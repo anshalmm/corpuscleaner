@@ -39,6 +39,9 @@ Alongside this, there are `Frequency List` functions relative to the
 - `unnest_N4_grams`
 - `unnest_N5_grams`
 
+These functions can take in any `tibble` made from the `document_by_ID`
+function.
+
 ## Installation
 
 You can install the development version of corpuscleaner from
@@ -99,32 +102,34 @@ Documents
 #> 16 16    Dr Jekyll and Hyde             strange case of dr jekyll … 1886  Steve…
 #> 17 17    The Picture of Dorian Gray     the artist is the creator … 1890  Wilde…
 #> 18 18    Dracula                        chapter jonathan harker s … 1897  Stoke…
-document_by_ID(id == 1, vars = "year")
-#> # A tibble: 1 × 3
-#> # Groups:   id, text [1]
-#>   id    text                                                               year 
-#>   <chr> <chr>                                                              <chr>
-#> 1 1     vathek an arabian tale by william beckford esq p vathek vathek ni… 1786
+document_by_ID(id == 1)
+#> # A tibble: 1 × 5
+#> # Groups:   id [1]
+#>   id    title  text                                                 year  author
+#>   <chr> <chr>  <chr>                                                <chr> <chr> 
+#> 1 1     Vathek vathek an arabian tale by william beckford esq p va… 1786  Beckf…
 
 # Frequency List
-unigram_Analysis = unnest_unigrams(id == 4)
+VText = document_by_ID(id == 1) 
+unigram_Analysis = unnest_unigrams(VText)
 UA = unigram_Analysis %>%
   anti_join(get_stopwords("en", source = "smart"))
 UA
-#> # A tibble: 55,650 × 5
-#>    id    title               author         year  word     
-#>    <chr> <chr>               <chr>          <chr> <chr>    
-#>  1 4     The Monk: A Romance Lewis, Matthew 1795  monk     
-#>  2 4     The Monk: A Romance Lewis, Matthew 1795  romance  
-#>  3 4     The Monk: A Romance Lewis, Matthew 1795  matthew  
-#>  4 4     The Monk: A Romance Lewis, Matthew 1795  lewis    
-#>  5 4     The Monk: A Romance Lewis, Matthew 1795  somnia   
-#>  6 4     The Monk: A Romance Lewis, Matthew 1795  terrores 
-#>  7 4     The Monk: A Romance Lewis, Matthew 1795  magicos  
-#>  8 4     The Monk: A Romance Lewis, Matthew 1795  miracula 
-#>  9 4     The Monk: A Romance Lewis, Matthew 1795  sagas    
-#> 10 4     The Monk: A Romance Lewis, Matthew 1795  nocturnos
-#> # ℹ 55,640 more rows
+#> # A tibble: 15,138 × 5
+#> # Groups:   id [1]
+#>    id    title  author            year  word    
+#>    <chr> <chr>  <chr>             <chr> <chr>   
+#>  1 1     Vathek Beckford, William 1786  vathek  
+#>  2 1     Vathek Beckford, William 1786  arabian 
+#>  3 1     Vathek Beckford, William 1786  tale    
+#>  4 1     Vathek Beckford, William 1786  william 
+#>  5 1     Vathek Beckford, William 1786  beckford
+#>  6 1     Vathek Beckford, William 1786  esq     
+#>  7 1     Vathek Beckford, William 1786  vathek  
+#>  8 1     Vathek Beckford, William 1786  vathek  
+#>  9 1     Vathek Beckford, William 1786  ninth   
+#> 10 1     Vathek Beckford, William 1786  caliph  
+#> # ℹ 15,128 more rows
 ```
 
 If you would like to know more about this package, please see the [Get
