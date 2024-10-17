@@ -5,9 +5,21 @@ template:
   bootstrap: 5
 reference:
 - title: Functions
+
+- subtitle: Text Analysis
   contents:
   - novels
   - document_by_ID
+
+- subtitle: Frequency Lists
+  contents:
+  - unnest_unigrams
+  - unnest_bigrams
+  - unnest_trigrams
+  - unnest_N4_grams
+  - unnest_N5_grams
+
+
 - title: Datasets
   contents:
   - Documents
