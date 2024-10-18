@@ -14,10 +14,10 @@ A \code{tibble} with 5 variables:
 }
 }
 \usage{
-unnest_N4_grams(data, args, ...)
+unnest_N4_grams(data, args)
 }
 \arguments{
-\item{...}{Input in the `id` of your choice from the `Documents` dataset}
+\item{tbl}{Input in the `tibble` of your choice made from the `document_by_ID` function}
 }
 \value{
 Mulitword combination of `4 tokens`

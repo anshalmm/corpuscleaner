@@ -14,10 +14,10 @@ A \code{tibble} with 5 variables:
 }
 }
 \usage{
-unnest_unigrams(data, args, ...)
+unnest_unigrams(data, args)
 }
 \arguments{
-\item{...}{Input in the `id` of your choice from the `Documents` dataset}
+\item{tbl}{Input in the `tibble` of your choice made from the `document_by_ID` function}
 }
 \value{
 Splitting text into `1 token`
